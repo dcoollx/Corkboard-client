@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route} from 'react-router-dom';
 import './App.css';
+import Main from './components/main/main';
+import Login from './components/login/login';
+import NoticePage from './components/main/announcements/NoticePage/noticePage';
+import {testNotices} from './test/demoData';
 
-function App() {
+class App extends React.Component {
+  state = {
+    orgName:null,
+    announcements:[...testNotices(5)],
+    isSignedIn: false,
+    hasError:false,
+  };
+  render(){
+    console.log(this.state.announcements)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route exact path="/" render={(props)=>{
+        return(
+        <Main {...props} announcements={this.state.announcements}/>
+        );
+        }}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/notice/:id" render={(props)=>{
+        return(<NoticePage {...props} notice={this.state.announcements.find((notice)=>props.match.params.id === String(notice.id))}/>);
+      }}/>
     </div>
   );
+  }
 }
 
 export default App;
