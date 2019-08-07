@@ -11,9 +11,12 @@ import Api from './services/api.service';
 
 class App extends React.Component {
   state = {
-    orgName:null,
+    org:{
+       orgName:null,
+        orgId:null
+    },
     notices:[...testNotices(5)],
-    isSignedIn: false,
+ 
     hasError:false,
     err:null
   };
@@ -30,9 +33,17 @@ class App extends React.Component {
         console.log('fetch encountered an error', err);
       });
   }
-  signIn = (username, password)=>{
-    token_service.setAuthToken(token_service.encodeUsername(username,password));//todo add server side validation
-
+  signIn = (user_name, password,org)=>{
+    let options ={
+      method:'POST',
+      headers:new Headers({'Content-type':'application/json'}),
+      body: JSON.stringify({user_name,password,org})
+    };
+    return Api.doFetch('login',options).then((res)=>{
+      token_service.setAuthToken(res.Auth);
+      this.setState({org:{orgName:org,orgId:1}})//TODO, orgid is hardcoded
+      localStorage.setItem('orgInfo',{orgName:org,orgId:1})
+    });
   }
   render(){
     console.log(this.state.notices)
@@ -42,7 +53,7 @@ class App extends React.Component {
       <Route exact path="/" render={(props)=>{
         if(token_service.hasAuthToken())
           return(
-          <Main {...props} announcements={this.state.notices}/>
+          <Main {...props} orgInfo = {this.state.org} announcements={this.state.notices}/>
           );
         else
             return <Login {...props} signIn = {this.signIn}/>

@@ -1,12 +1,17 @@
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './header.css';
+import tokenService from '../../../services/token.service';
 
 export default function(props){
   return(
     <nav className="header">
-      {props.orgName || 'TEST ORG'}
-      {(props.isSignedIn && <button onClick ={(props)=>props.history.push('/')}>logout</button>) || <button onClick={()=>props.history.push('/login')}>login</button>}
+      {props.orgInfo.orgName || 'TEST ORG'}
+      <button onClick ={(e)=>{
+        tokenService.clearAuthToken();
+        props.history.push('/');
+
+      }}>logout</button>
       <Link to='/newNotice'>+</Link>
       <button>settings</button>
     </nav>
