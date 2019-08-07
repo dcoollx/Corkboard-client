@@ -1,19 +1,67 @@
 import React from 'react';
 import Comments from './comments';
-import {testComments} from '../../../../test/demoData';
+import Api from '../../../../services/api.service';
 
 
-export default function(props){
+
+
+export default class NoticePage extends React.Component{
+  state = {
+    hasError:false,
+    err:null,
+    comments:[],
+    noticeNumber: this.props.match.params.id
+  };
+  componentDidMount(){
+    Api.doFetch(this.state.noticeNumber +'/comments')//todo add options to include key
+      .then((comments)=>{
+        this.setState({
+          hasError:false,
+          err:null,
+          comments:comments
+        });
+
+      }).catch(err=>this.setState({hasError:true,err:err}));
+  }
+  postComment = (content) =>{//comment requires content, created by(int), org(?), posted_on(init)
+    let options ={
+      method:'POST',
+      headers:new Headers({'content-type':'application/json'}),
+      body: JSON.stringify({content,created_by:1,posted_on:this.state.noticeNumber})
+    };
+    Api.doFetch(this.state.noticeNumber + '/comments',options)
+    .then(res=>{
+      this.setState({
+        comments: [...this.state.comments,...res],
+        hasError:false,
+        err:null
+      });
+
+
+    }).catch(err=>this.setState({hasError:true,err:err}));
+  }
   //todo, make this a fetch to get commets from server, for now using testdata
-  let comments = testComments(props.notice.id).map((comment, index)=>{
+  render(){
+  let comments = this.state.comments.map((comment, index)=>{
     return (<Comments key={index} content={comment.content} by={comment.created_by}/>);
   });
   return(
   <div>
-    <h2>{props.notice.title}</h2>
-    <p>{props.notice.content}</p>
-    <p>by: <i>{props.notice.created_by}</i></p>
+    {this.state.hasError && this.state.err.toString()}
+    <h2>{this.props.notice.title}</h2>
+    <p>{this.props.notice.content}</p>
+    <p>by: <i>{this.props.notice.created_by}</i></p>
     {comments}
-    <button onClick={(e)=>props.history.push('/')}>Go Back</button>
+    <form onSubmit={
+      (e)=>{e.preventDefault();
+      this.postComment(e.target['comment'].value);
+      e.target['comment'].value = '';
+      }
+    }>
+    <textarea id="comment" name="comment"></textarea>
+    <button type="submit">comment</button>
+    </form>
+    <button onClick={(e)=>this.props.history.push('/')}>Go Back</button>
   </div>);
+  }
 }

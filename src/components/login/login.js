@@ -3,11 +3,16 @@ export default function(props){
   return(
     <div>
       Sign in page
-      <form>
+      <form onSubmit={(e)=>{
+        e.preventDefault();
+        props.signIn();
+        //then->
+        props.history.push('/');
+      }}>
         <label>username</label>
         <input type="test"/>
         <label>password</label>
-        <input type="text"/>
+        <input type="password"/>
         <button type="submit">Sign in</button>
       </form>
       <a href="www.google.com">Already a user</a>

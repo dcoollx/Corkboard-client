@@ -1,10 +1,12 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import Main from './components/main/main';
 import Login from './components/login/login';
 import NoticePage from './components/main/announcements/NoticePage/noticePage';
+import NewNotice from './components/newNotice/newNotice';
 import {testNotices} from './test/demoData';
+import token_service from './services/token.service';
 import Api from './services/api.service';
 
 class App extends React.Component {
@@ -15,6 +17,7 @@ class App extends React.Component {
     hasError:false,
     err:null
   };
+  
   componentDidMount(){
     let options ={
       method:'GET',
@@ -27,19 +30,29 @@ class App extends React.Component {
         console.log('fetch encountered an error', err);
       });
   }
+  signIn = (username, password)=>{
+    token_service.setAuthToken(token_service.encodeUsername(username,password));//todo add server side validation
+
+  }
   render(){
     console.log(this.state.notices)
   return (
     <div className="App">
+    <Switch>
       <Route exact path="/" render={(props)=>{
-        return(
-        <Main {...props} announcements={this.state.notices}/>
-        );
+        if(token_service.hasAuthToken())
+          return(
+          <Main {...props} announcements={this.state.notices}/>
+          );
+        else
+            return <Login {...props} signIn = {this.signIn}/>
         }}/>
-      <Route exact path="/login" component={Login}/>
+      <Route exact path="/" component={Login}/>
       <Route exact path="/notice/:id" render={(props)=>{
         return(<NoticePage {...props} notice={this.state.notices.find((notice)=>props.match.params.id === String(notice.id))}/>);
       }}/>
+    </Switch>
+    <Route path="/newNotice" component={NewNotice}/>  
     </div>
   );
   }
