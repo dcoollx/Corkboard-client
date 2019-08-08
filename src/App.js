@@ -39,7 +39,7 @@ class App extends React.Component {
     Api.doFetch('corkboards',options)
       .then(notices=>this.setState({notices:notices.notices}))
       .catch(err=>{
-        this.setState({hasError:true,err})
+        this.setState({hasError:true,err:err.message})
         console.log('fetch encountered an error', err);
       });
 
@@ -55,7 +55,7 @@ class App extends React.Component {
       this.setState({org:{orgName:org,orgId:1}})//TODO, orgid is hardcoded
       localStorage.setItem('orgInfo',JSON.stringify({orgName:org,orgId:1}));
       this.init();
-    });
+    }).catch(err=>this.setState({hasError:true,err:err.message});)
   }
   render(){
     console.log(this.state.notices)
