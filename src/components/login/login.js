@@ -1,13 +1,22 @@
 import React from 'react';
-export default function(props){
-  return(
+import {Link} from 'react-router-dom';
+export default class Login extends React.Component{
+  state = {
+      hasError:false,
+      err:null
+    };
+  render(){
+    
+    return(
     <div>
+      {this.state.hasError && <p className="error">{this.state.err}</p>}
       Login in page
       <form onSubmit={(e)=>{
         e.preventDefault();
-        props.signIn(e.target.user_name.value,e.target.password.value,e.target.org_name.value)
-          .then((x)=>props.history.push('/')).catch((err)=>{
+        this.props.signIn(e.target.user_name.value,e.target.password.value,e.target.org_name.value)
+          .then((x)=>this.props.history.push('/')).catch((err)=>{
             console.log(err);
+            this.setState({hasError:true,err:err})
           });
         //then->
         
@@ -17,11 +26,11 @@ export default function(props){
         <label htmlFor="password">password</label>
         <input type="password" name="password" id="password"/>
         <label htmlFor="org_name">Organization</label>
-        <input type="text" id="org_name" name="or_name" defaultValue={localStorage.getItem('org_name')|| ''}/>
+        <input type="text" id="org_name" name="or_name" defaultValue={(JSON.parse(localStorage.getItem('orgInfo')) || '').orgName}/>
         <button type="submit">Sign in</button>
       </form>
-      <a href="www.google.com">Already a user</a>
-      <button onClick={(e)=>props.history.push('/')}>go back</button>
+      <Link to='/register'>New user?</Link>
     </div>
   );
+}
 }

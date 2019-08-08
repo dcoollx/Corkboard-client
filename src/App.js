@@ -8,13 +8,11 @@ import NewNotice from './components/newNotice/newNotice';
 import {testNotices} from './test/demoData';
 import token_service from './services/token.service';
 import Api from './services/api.service';
+import Register from './components/login/Register';
 
 class App extends React.Component {
   state = {
-    org:{
-       orgName:null,
-        orgId:null
-    },
+    org:JSON.parse(localStorage.getItem('orgInfo')) || {orgId:0,orgName:'Not connected to an org'},
     notices:[...testNotices(5)],
  
     hasError:false,
@@ -26,12 +24,25 @@ class App extends React.Component {
       method:'GET',
       headers: new Headers({'content-type':'application/json'})
     };
-    Api.doFetch('1/corkboard',options)
+    Api.doFetch('corkboards',options)
       .then(notices=>this.setState({notices:notices.notices}))
       .catch(err=>{
         this.setState({hasError:true,err})
         console.log('fetch encountered an error', err);
       });
+  }
+  init(){
+    let options ={
+      method:'GET',
+      headers: new Headers({'content-type':'application/json'})
+    };
+    Api.doFetch('corkboards',options)
+      .then(notices=>this.setState({notices:notices.notices}))
+      .catch(err=>{
+        this.setState({hasError:true,err})
+        console.log('fetch encountered an error', err);
+      });
+
   }
   signIn = (user_name, password,org)=>{
     let options ={
@@ -42,13 +53,16 @@ class App extends React.Component {
     return Api.doFetch('login',options).then((res)=>{
       token_service.setAuthToken(res.Auth);
       this.setState({org:{orgName:org,orgId:1}})//TODO, orgid is hardcoded
-      localStorage.setItem('orgInfo',{orgName:org,orgId:1})
+      localStorage.setItem('orgInfo',JSON.stringify({orgName:org,orgId:1}));
+      this.init();
     });
   }
   render(){
     console.log(this.state.notices)
   return (
+    
     <div className="App">
+    <Route exact path="/register" component = {Register}/>
     <Switch>
       <Route exact path="/" render={(props)=>{
         if(token_service.hasAuthToken())

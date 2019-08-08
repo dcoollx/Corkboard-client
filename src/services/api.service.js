@@ -8,7 +8,7 @@ export default class Api{
       options.headers.set('Authorization','bearer ' + tokenService.getAuthToken());
     return fetch(this.url + endpoint,options).then(res=>{
       if(!res.ok)
-        return Promise.reject(new Error(res.json()));
+        return Promise.reject(res.json());
       else
         return res.json();
     })

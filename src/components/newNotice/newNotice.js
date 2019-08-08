@@ -20,7 +20,7 @@ export default class NewNotice extends React.Component{
       }),
       body: JSON.stringify({title,content,created_by:1})
     };
-    Api.doFetch('1/notices',options).then((resp)=>{
+    Api.doFetch('notices',options).then((resp)=>{
       this.props.history.push('/');
     }).catch(err=>{
       this.setState({hasError:true,err});

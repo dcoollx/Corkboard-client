@@ -6,7 +6,7 @@ import tokenService from '../../../services/token.service';
 export default function(props){
   return(
     <nav className="header">
-      {props.orgInfo.orgName || 'TEST ORG'}
+      {props.orgInfo.orgName}
       <button onClick ={(e)=>{
         tokenService.clearAuthToken();
         props.history.push('/');
