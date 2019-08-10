@@ -1,5 +1,4 @@
 import React from 'react';
-import './notice.css';
 //expecting name and anouncements
 export default function(props){
   console.log(props.data.created_on);

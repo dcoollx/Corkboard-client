@@ -4,7 +4,7 @@ import Corkboard from './announcements/corkboard';
 
 export default function(props){
   return(
-    <main>
+    <main className="container">
       <Header orgInfo = {props.orgInfo} {...props}/>
       <Corkboard {...props} data = {props.announcements}/>
     </main>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import './App.css';
+import './styles/App.css';
 import Main from './components/main/main';
 import Login from './components/login/login';
 import NoticePage from './components/main/announcements/NoticePage/noticePage';
@@ -55,19 +55,19 @@ class App extends React.Component {
       this.setState({org:{orgName:org,orgId:1}})//TODO, orgid is hardcoded
       localStorage.setItem('orgInfo',JSON.stringify({orgName:org,orgId:1}));
       this.init();
-    }).catch(err=>this.setState({hasError:true,err:err.message});)
+    }).catch(err=>this.setState({hasError:true,err:err.message}));
   }
   render(){
     console.log(this.state.notices)
   return (
     
-    <div className="App">
+    <div className="App ">
     <Route exact path="/register" component = {Register}/>
     <Switch>
       <Route exact path="/" render={(props)=>{
         if(token_service.hasAuthToken())
           return(
-          <Main {...props} orgInfo = {this.state.org} announcements={this.state.notices}/>
+          <Main className='container' {...props} orgInfo = {this.state.org} announcements={this.state.notices}/>
           );
         else
             return <Login {...props} signIn = {this.signIn}/>

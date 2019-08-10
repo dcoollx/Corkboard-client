@@ -1,0 +1,8 @@
+.header{
+  background-color: blue;
+  color:white;
+  padding: 10px;
+}
+.header > *{
+  grid-row: span 6;
+}
