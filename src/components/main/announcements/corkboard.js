@@ -1,11 +1,12 @@
 import React from 'react';
-import SubSection from './subSection';
+import Comment from './notice';
 
 export default function(props){
+  let notices = props.data.map((notice, index)=>{
+    return <Comment {...props} key={index} data={notice}/>
+   });
   return(
-  <div>
-    <SubSection {...props} name="ORG" announcements ={props.data.filter((notice)=>notice.level === 1)}/>
-    <SubSection {...props} name="Department" announcements ={props.data.filter((notice)=>notice.level === 2)}/>
-    <SubSection {...props} name="My Team" announcements ={props.data.filter((notice)=>notice.level === 3)}/>
+  <div className="corkboard col-center row-center container">
+   {notices}
   </div>);
 }

@@ -1,0 +1,14 @@
+.newNotice{
+ 
+  background-color: white;
+  box-shadow: 5px 5px var(--shadow);
+  padding:80px;
+}
+#preview{
+  border: 1px solid black;
+
+}
+textarea{
+  width:100%;
+  height:200px;
+}

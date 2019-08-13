@@ -58,12 +58,14 @@ export default class NoticePage extends React.Component{
     return (<Comments key={index} content={comment.content} by={comment.created_by}/>);
   });
   return(
-  <div>
-    {this.state.hasError && this.state.err.toString()}
-    <h2>{this.props.notice.title}</h2>
-    <div id="content"></div>
-    <p>by: <i>{this.props.notice.created_by}</i></p>
-    {comments}
+  <div className="noticePage col-center row-center ">
+   {this.state.hasError && <p className="error col-full" >this.state.err.toString()</p>}
+   <div className="notice-content col-full">
+    <h2 className="col-center">{this.props.notice.title}</h2>
+    <div className="container content" id="content"></div>
+    <p className="by col-right">by: <i>{this.props.notice.created_by}</i></p>
+    </div>
+    <div className="comments col-center">{comments}</div>
     <form onSubmit={
       (e)=>{e.preventDefault();
       this.postComment(e.target['comment'].value);

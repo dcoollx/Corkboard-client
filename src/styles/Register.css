@@ -1,0 +1,30 @@
+.register{
+  background-color: white;
+  box-shadow: 5px 5px var(--shadow);
+  padding-top:40px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 40px;
+
+}
+.register-controls{
+  margin-top:50px;
+}
+button:disabled{
+  background-color: grey;
+
+}
+.register > div > h2, .error{
+  margin:0px;
+}
+.register >form{
+  padding:30px;
+}
+.register > form > div > input, select{
+  width:100%;
+}
+@media only screen and (min-width:640px){
+  .register{
+
+  }
+}

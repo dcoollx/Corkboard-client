@@ -9,6 +9,8 @@ import {testNotices} from './test/demoData';
 import token_service from './services/token.service';
 import Api from './services/api.service';
 import Register from './components/login/Register';
+import Corkboard from './components/main/announcements/corkboard';
+import Header from './components/main/header/header';
 
 class App extends React.Component {
   state = {
@@ -44,16 +46,17 @@ class App extends React.Component {
       });
 
   }
-  signIn = (user_name, password,org)=>{
+  signIn = (user_name, password)=>{
     let options ={
       method:'POST',
       headers:new Headers({'Content-type':'application/json'}),
-      body: JSON.stringify({user_name,password,org})
+      body: JSON.stringify({user_name,password})
     };
     return Api.doFetch('login',options).then((res)=>{
-      token_service.setAuthToken(res.Auth);
-      this.setState({org:{orgName:org,orgId:1}})//TODO, orgid is hardcoded
-      localStorage.setItem('orgInfo',JSON.stringify({orgName:org,orgId:1}));
+      token_service.setAuthToken(res.Auth);//need to decode payload
+      let payload = JSON.parse(atob(res.Auth.split('.')[1]));
+      this.setState({org:{orgName:payload.org_name,orgId:payload.org}})//TODO, orgid is hardcoded
+      localStorage.setItem('orgInfo',JSON.stringify({orgName:payload.org_name,orgId:payload.org}));
       this.init();
     }).catch(err=>this.setState({hasError:true,err:err.message}));
   }
@@ -61,24 +64,22 @@ class App extends React.Component {
     console.log(this.state.notices)
   return (
     
-    <div className="App ">
-    <Route exact path="/register" component = {Register}/>
-    <Switch>
-      <Route exact path="/" render={(props)=>{
+    <main className="App main-container ">
+    <Route path="/" render={(props)=><Header {...props} orgInfo = {this.state.org}/>}/>
+    <Route exact path="/" render={(props)=>{
         if(token_service.hasAuthToken())
           return(
-          <Main className='container' {...props} orgInfo = {this.state.org} announcements={this.state.notices}/>
+          <Corkboard {...props} data={this.state.notices}/>
           );
         else
             return <Login {...props} signIn = {this.signIn}/>
         }}/>
-      <Route exact path="/" component={Login}/>
+      <Route exact path="/register" component = {Register}/>
       <Route exact path="/notice/:id" render={(props)=>{
         return(<NoticePage {...props} notice={this.state.notices.find((notice)=>props.match.params.id === String(notice.id))}/>);
       }}/>
-    </Switch>
     <Route path="/newNotice" component={NewNotice}/>  
-    </div>
+    </main>
   );
   }
 }

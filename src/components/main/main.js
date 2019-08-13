@@ -4,9 +4,9 @@ import Corkboard from './announcements/corkboard';
 
 export default function(props){
   return(
-    <main className="container">
+    <div className="container col-center row-full">
       <Header orgInfo = {props.orgInfo} {...props}/>
       <Corkboard {...props} data = {props.announcements}/>
-    </main>
+    </div>
   );
 }

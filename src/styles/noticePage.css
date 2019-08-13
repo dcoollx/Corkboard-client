@@ -1,0 +1,11 @@
+.noticePage{
+  background-color: white;
+  box-shadow: 5px 5px var(--shadow);
+  
+}
+
+@media only screen and (max-width:600px){
+.noticePage{
+  padding:10px;
+}
+}

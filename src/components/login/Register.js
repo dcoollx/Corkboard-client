@@ -5,7 +5,7 @@ import Api from '../../services/api.service';
    state={
      isNewOrg:false,
      hasError:true,
-     err:new Error('Pass word must match')
+     err:new Error('Password must match')
    };
    handleSubmit = async (form) => {
      let {user_name, password, org} = form;
@@ -55,31 +55,63 @@ import Api from '../../services/api.service';
    }
   render(){
     return(
-      <div> <label>Create New Organization?</label><br/>
-      <p className="error">{this.state.hasError && this.state.err.message}</p>
-          <input onChange={(e)=>this.setState({isNewOrg:e.target.checked})} type="checkbox"/>
-        <form onSubmit = {(e)=>{
+      <div className="register container col-center row-full">
+        <div className="col-center"> 
+      {this.state.hasError && <p className="error col-center">{this.state.err.message}</p>}
+      <h2 className="col-center">Sign-Up</h2> 
+      </div>
+        <form className="col-center" onSubmit = {(e)=>{
           e.preventDefault();
           this.handleSubmit(e.target);
         }}>
-          <label>UserName</label>
+          <div>
+          <label>First Name</label><br/>
+          <input type="text" name="first_name" id="first_name" required/>
+          </div>
+          <div>
+          <label>Last Name</label><br/>
+          <input type="text" name="Last_name" id="last_name" required/>
+          </div>
+          <div>
+          <label>Position</label><br/>
+          <select>
+            <option>Junior</option>
+            <option>Senior</option>
+            <option>Management</option>
+            <option>Director</option>            
+          </select>
+          </div>
+          
+          <div>
+          <label>UserName</label><br/>
           <input type="text" name="user_name" id="user_name" required/>
+          </div>
+          <div>
           <label>password</label>
           <input type="password" name="password" id="password" required/>
+          </div>
+          <div>
           <label>re-enter password</label>
           <input type="password" onChange={(e)=>{
             if(e.target.value === document.getElementById('password').value){
               document.getElementById('register_submit').disabled =false;
               this.setState({hasError:false, err:null});
+            }else{
+              document.getElementById('register_submit').disabled =true;
+              this.setState({hasError:true, err:new Error('Password must match')});
             }
           }}/>
+          </div>
           <div><label htmlFor="org">Organization</label>
-          <input id="org" name="org" type="text" required/></div>}
+          <input id="org" name="org" type="text" required/></div>
           {this.state.isNewOrg && <div>
             <label>Organization name</label>
             <input type='text'/>
-          </div>} 
-          <button id="register_submit" type="submit" disabled>Submit</button>
+          </div>}
+          <div className="container register-controls"> 
+          <button id="register_submit" className="col-1" type="submit" disabled>Submit</button>
+          <button className="col-right" id="reset" type="reset"onClick={(e)=>this.props.history.push('/')}>cancel</button>
+          </div>
         </form>
       </div>
     );

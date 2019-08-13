@@ -1,56 +1,88 @@
 @import './import.styles.css';
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
 main, #root, .App, html, body{
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../images/corkboard_img.jpg');
+  font-size: 36px;
+  font-family: 'Nunito', sans-serif;
 }
+input{
+  line-height: 36px;
+}
+
 button{
   border: grey 1px solid;
   box-shadow: none;
   border-radius: 20px;
-  background-color: green;
+  background-color:var(--accent-light);
   color:white;
+  line-height: 80px;
+  font-size: 36px;
 }
-
+h1, h2, h3, h4{
+  
+}
+.error{
+  color: red;
+  font-size: 50%;
+}
+.main-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: 15vh auto auto auto auto auto auto auto  ;
+  row-gap: 5%; 
+}
 .container{
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  grid-template-rows: auto auto auto auto auto auto;
-  row-gap: 2%;
-  column-gap: 10px; 
+  grid-template-columns: auto auto auto auto auto;
+  row-gap: 5%; 
 }
 .col-full{
-  grid-column: span 6;
+  grid-column: span 5;
+}
+.col-center,.col-1, .col-half, .col-right{
+  grid-column: 2/span 3;
+}
+@media only screen and (min-width:640px){
+
+  .main-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 5vh auto auto auto auto auto auto auto  ;
+    row-gap: 2%;
+    column-gap: 10px; 
+  }
+  
+.col-full{
+  grid-column: span 5;
 }
 .row-full{
-    grid-row: span 6;
+    grid-row-start: 3;
+    grid-row-end: auto;
 }
 .col-half{
-  grid-column: span 3;
+  grid-column: span 2;
 }
 .col-right{
-  grid-column: 4;
+  grid-column: 5;
 }
-col-center{
-  grid-column: 2/span 4;
+.col-center{
+  grid-column: 2/span 3;
+}
+.col-1{
+  grid-column: span 1;
+}
+.row-center{
+  grid-row: 4
+}
+}
+body{
+--primary:#B28B54;
+--secondary:#664B26;
+--nuetral:#FFD191;
+--accent-dark:#1C4966;
+--accent-light:#548EB3;
+--shadow:rgba(115, 89, 54, 0.45);
 }

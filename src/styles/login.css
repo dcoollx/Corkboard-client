@@ -1,0 +1,24 @@
+.login{
+  background-color: white;
+  box-shadow: 10px 10px var(--shadow);
+  padding:80px;
+
+}
+.login > div > h2, .error{
+  margin:0px;
+}
+.login >form{
+  padding:30px;
+}
+.login-controls{
+  margin-top:20px;
+  font-size: 50%;
+}
+.login > form > div > input, select{
+  width:100%;
+}
+@media only screen and (min-width:640px){
+  .login{
+
+  }
+}

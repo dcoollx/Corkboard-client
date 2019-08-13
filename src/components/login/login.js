@@ -8,12 +8,14 @@ export default class Login extends React.Component{
   render(){
     
     return(
-    <div>
-      {this.state.hasError && <p className="error">{this.state.err}</p>}
-      Login in page
-      <form onSubmit={(e)=>{
+    <div className="login container col-center row-center">
+      <div className="col-center">
+        {this.state.hasError && <p className="error">{this.state.err}</p>}
+        <h2>Login in</h2>
+      </div>
+      <form className="col-center" onSubmit={(e)=>{
         e.preventDefault();
-        this.props.signIn(e.target.user_name.value,e.target.password.value,e.target.org_name.value)
+        this.props.signIn(e.target.user_name.value,e.target.password.value)
           .then((x)=>this.props.history.push('/')).catch((err)=>{
             console.log(err);
             this.setState({hasError:true,err:err})
@@ -21,15 +23,20 @@ export default class Login extends React.Component{
         //then->
         
       }}>
-        <label>username</label>
-        <input htmlFor="user_name" type="test" name="user_name" id="user_name"/>
-        <label htmlFor="password">password</label>
-        <input type="password" name="password" id="password"/>
-        <label htmlFor="org_name">Organization</label>
-        <input type="text" id="org_name" name="or_name" defaultValue={(JSON.parse(localStorage.getItem('orgInfo')) || '').orgName}/>
-        <button type="submit">Sign in</button>
+        <div>
+          <label htmlFor="user_name">Username</label><br/>
+          <input type="test" name="user_name" id="user_name" />
+        </div>
+        <div>
+          <label htmlFor="password">password</label><br/>
+          <input type="password" name="password" id="password"/>
+        </div>
+        <div className="login-controls container">
+          <button className="col-1" type="submit">Sign in</button>
+          <Link className="col-right" to='/register'>New user?</Link>
+        </div>
       </form>
-      <Link to='/register'>New user?</Link>
+      
     </div>
   );
 }
