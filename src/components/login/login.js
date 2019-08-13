@@ -8,7 +8,7 @@ export default class Login extends React.Component{
   render(){
     
     return(
-    <div className="login container col-center row-center">
+    <div id="login" className=" container col-center row-center">
       <div className="col-center">
         {this.state.hasError && <p className="error">{this.state.err}</p>}
         <h2>Login in</h2>

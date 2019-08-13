@@ -1,10 +1,11 @@
-.register{
+#register{
   background-color: white;
   box-shadow: 5px 5px var(--shadow);
   padding-top:40px;
   padding-left: 80px;
   padding-right: 80px;
   padding-bottom: 40px;
+  grid-column: 1/span 5;
 
 }
 .register-controls{
@@ -14,17 +15,17 @@ button:disabled{
   background-color: grey;
 
 }
-.register > div > h2, .error{
+#register > div > h2, .error{
   margin:0px;
 }
-.register >form{
+#register >form{
   padding:30px;
 }
-.register > form > div > input, select{
+#register > form > div > input, select{
   width:100%;
 }
 @media only screen and (min-width:640px){
-  .register{
-
+  #register{
+    grid-column: 2/span 3;
   }
 }

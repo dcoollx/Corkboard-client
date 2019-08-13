@@ -55,7 +55,7 @@ import Api from '../../services/api.service';
    }
   render(){
     return(
-      <div className="register container col-center row-full">
+      <div id="register" className=" container col-center row-full">
         <div className="col-center"> 
       {this.state.hasError && <p className="error col-center">{this.state.err.message}</p>}
       <h2 className="col-center">Sign-Up</h2> 

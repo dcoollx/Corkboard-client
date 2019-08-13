@@ -1,13 +1,40 @@
-.header{
+#header > button{
+  color:white;
+  text-decoration: none;
+  background-color: rgba(255,255,255,0);
+  border:none;
+}
+#header{
   background-color:var(--accent-dark);
   color:white;
   padding: 10px;
-  width:100vw;
+  width:105vw;
   height:100%;
 }
 .nav-button {
-  grid-column: 5;
+  grid-column: 4;
+  height:40px;
+  line-height: 40px;
+  margin-right:10px;
   
+}
+.content{
+  border: 1px solid black;
+}
+.comments{
+ text-align: right;
+ font-size: 50%;
+}
+.comment{
+
+}
+.by{
+  font-size: 75%;
+  color:grey;
+  
+}
+.comment-content:before,.comment-content:after{
+  content: '"'
 }
 .add_Notice{
   position: absolute;
@@ -16,5 +43,12 @@
   border-radius: 25px;
 }
 @media only screen and (min-width:640px){
-  
+  #header{
+    height:50%;
+  }
+  .nav-button {
+    grid-column: 4;
+    margin-right:-25px
+    
+  }
 }

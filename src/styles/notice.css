@@ -7,6 +7,7 @@
   background-color:white;
   box-shadow: 5px 5px var(--shadow);
   height:80px;
+  font-size: 50%;
   line-height: 40px;
   width:80vw;
   line-height: 36px;
@@ -14,7 +15,7 @@
 }
 .status{
   background-color:red;
-  height: 5vh;
+  height: 50%;
   margin:-10px;
 }
 
@@ -26,8 +27,7 @@
   height:400px;
   width:400px;
 }
-.noticePage{
-  background-color: white;
-  border: var(--nuetral) solid 5px;
+.status{
+  height: 5vh;
 }
 }

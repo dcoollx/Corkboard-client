@@ -1,0 +1,29 @@
+.settings{
+  width:80%;
+  height: 100%;
+  position: absolute;
+  right:1px;
+  background-color: var(--accent-dark);
+  color:white;
+
+}
+.settings_button{
+  background-color: rgba(1,1,1,0);
+  border-radius: 0px;
+}
+ul{
+  list-style: none;
+}
+.Overlay{
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(1,1,1,0.55)
+}
+@media only screen and (min-width:640px){
+  .settings{
+    width:50%;
+  }
+}

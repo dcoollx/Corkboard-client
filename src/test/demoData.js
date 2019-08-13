@@ -2,7 +2,7 @@
    let result = [];
    for(let x =0; x<= howMany;x++)
     result.push({
-  id:x,title:'TEST ANNOUNCEMENT',content:'everyone is fired execpt david, effective immediately',org:'dunder-Mifflin Paper Co',created_by:'admin',created:new Date()});
+  id:x,title:'Not connected to server',content:'Check your internet connection or report a buf [here](http://www.google.com)',created_by:'admin',created:new Date()});
   return result;
 }
 

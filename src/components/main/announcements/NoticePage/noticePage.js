@@ -17,11 +17,15 @@ export default class NoticePage extends React.Component{
     err:null,
     content: null,
     comments:[],
-    noticeNumber: this.props.match.params.id
+    noticeNumber: this.props.match.params.id,
+    notice:{title:'no notice found',content:'nothing',posted_by:'noone',created:Date.now()}
   };
 
   componentDidMount(){
-    document.getElementById('content').innerHTML = this.markdown.makeHtml(this.props.notice.content);
+    
+    Api.doFetch(`notices/${this.props.match.params.id}`).then((notice)=>{
+      this.setState({notice},()=>document.getElementById('content').innerHTML = this.markdown.makeHtml(this.state.notice.content));
+    }).catch(err=>this.setState({hasError:true,err}));
     
     Api.doFetch(this.state.noticeNumber +'/comments')//todo add options to include key
       .then((comments)=>{
@@ -58,24 +62,27 @@ export default class NoticePage extends React.Component{
     return (<Comments key={index} content={comment.content} by={comment.created_by}/>);
   });
   return(
-  <div className="noticePage col-center row-center ">
+  <div id="noticePage" className=" col-center row-center container ">
    {this.state.hasError && <p className="error col-full" >this.state.err.toString()</p>}
    <div className="notice-content col-full">
-    <h2 className="col-center">{this.props.notice.title}</h2>
-    <div className="container content" id="content"></div>
-    <p className="by col-right">by: <i>{this.props.notice.created_by}</i></p>
+    <h2 className="col-center">{this.state.notice.title}</h2>
+    <div className="content col-full" id="content"></div>
+    <p className="by col-right">by: <i>{this.state.notice.created_by}</i></p>
     </div>
     <div className="comments col-center">{comments}</div>
-    <form onSubmit={
+    <form className="col-center" onSubmit={
       (e)=>{e.preventDefault();
       this.postComment(e.target['comment'].value);
       e.target['comment'].value = '';
       }
     }>
     <textarea id="comment" name="comment"></textarea>
-    <button type="submit">comment</button>
+    <div className="noticePage-controls container">
+    <button className="col-1" type="submit">comment</button>
+    <button className="col-right" onClick={(e)=>this.props.history.push('/')}>Go Back</button>
+    </div>
     </form>
-    <button onClick={(e)=>this.props.history.push('/')}>Go Back</button>
+    
   </div>);
   }
 }

@@ -1,24 +1,28 @@
-.login{
+#login{
   background-color: white;
   box-shadow: 10px 10px var(--shadow);
   padding:80px;
+  grid-column: 1/span 5;
+  height:100%;
+  margin-top:-25px;
 
 }
-.login > div > h2, .error{
+#login > div > h2, .error{
   margin:0px;
 }
-.login >form{
+#login >form{
   padding:30px;
 }
 .login-controls{
   margin-top:20px;
   font-size: 50%;
 }
-.login > form > div > input, select{
+#login > form > div > input, select{
   width:100%;
 }
 @media only screen and (min-width:640px){
-  .login{
-
+  #login{
+    grid-column: 2/span 3;
+    height:80%;
   }
 }
