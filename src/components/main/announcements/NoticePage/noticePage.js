@@ -57,7 +57,6 @@ export default class NoticePage extends React.Component{
   //todo, make this a fetch to get commets from server, for now using testdata
   render(){
     this.converted = this.markdown.makeHtml(this.props.content);
-    console.log(this.converted);
   let comments = this.state.comments.map((comment, index)=>{
     return (<Comments key={index} content={comment.content} by={comment.created_by}/>);
   });

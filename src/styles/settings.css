@@ -5,7 +5,35 @@
   right:1px;
   background-color: var(--accent-dark);
   color:white;
+  padding: 10px;
+  padding-right:25px;
 
+}
+#join_team{
+  display:none;
+}
+#create_team{
+ display:none;
+}
+#manage_team{
+  display: none;
+}
+#create_team > button{
+  background-color: rgba(36, 44, 112, 0.5);
+  border-radius: 0px;
+  height:40px;
+  line-height: 36px;
+  font-size: 32px;
+}
+.team{
+  width:80%;
+}
+#join_team > button{
+  background-color: rgba(36, 44, 112, 0.5);
+  border-radius: 0px;
+  height:40px;
+  line-height: 36px;
+  font-size: 32px;
 }
 .settings_button{
   background-color: rgba(1,1,1,0);
@@ -25,5 +53,22 @@ ul{
 @media only screen and (min-width:640px){
   .settings{
     width:50%;
+  }
+  .team{
+    width:50%;
+  }
+  #join_team > button{
+    background-color: rgba(36, 44, 112, 0);
+    border-radius: 0px;
+    height:40px;
+    line-height: 36px;
+    font-size: 32px;
+  }
+  #create_team > button{
+    background-color: rgba(36, 44, 112, 0);
+    border-radius: 0px;
+    height:40px;
+    line-height: 36px;
+    font-size: 32px;
   }
 }

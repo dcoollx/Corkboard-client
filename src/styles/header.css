@@ -36,7 +36,8 @@
 .comment-content:before,.comment-content:after{
   content: '"'
 }
-.add_Notice{
+#add_Notice{
+  background-color: var(--accent-dark);
   position: absolute;
   bottom: 10px;
   right:10px;

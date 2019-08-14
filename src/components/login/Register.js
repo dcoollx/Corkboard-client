@@ -8,13 +8,17 @@ import Api from '../../services/api.service';
      err:new Error('Password must match')
    };
    handleSubmit = async (form) => {
-     let {user_name, password, org} = form;
-     org = await this.checkIfName(org.value,org);
+     let {display_name, user_name, password, org, position} = form;
+     if(!form.newOrg.checked)
+      org = await this.checkIfName(org.value,org);
+    else{
+      org = await Api.doFetch('/organizations',{method:'POST',headers:new Headers('content-type','application/json'),body:JSON.stringify(org.value)})
+      }
      window.org = org;
      if(org){//returns org id if it exsist and false if it doesnt
         
      //todo input validation
-     let newUser = {user_name:user_name.value, password:password.value, org};
+     let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org, user_position:position.value};
      let options ={
        method:'POST',
        headers: new Headers({'Content-type':'application/json'}),
@@ -65,34 +69,30 @@ import Api from '../../services/api.service';
           this.handleSubmit(e.target);
         }}>
           <div>
-          <label>First Name</label><br/>
-          <input type="text" name="first_name" id="first_name" required/>
+          <label htmlFor="display_name">Display Name</label><br/>
+          <input type="text" name="display_name" id="display_name" required/>
           </div>
           <div>
-          <label>Last Name</label><br/>
-          <input type="text" name="Last_name" id="last_name" required/>
-          </div>
-          <div>
-          <label>Position</label><br/>
-          <select>
-            <option>Junior</option>
-            <option>Senior</option>
-            <option>Management</option>
-            <option>Director</option>            
+          <label htmlFor="position">Position</label><br/>
+          <select name="position" id="position">
+            <option value="1">Junior</option>
+            <option value="2">Senior</option>
+            <option value="3">Management</option>
+            <option value="4">Director</option>            
           </select>
           </div>
           
           <div>
-          <label>UserName</label><br/>
+          <label htmlFor="user_name">UserName</label><br/>
           <input type="text" name="user_name" id="user_name" required/>
           </div>
           <div>
-          <label>password</label>
+          <label htmlFor="password">password</label>
           <input type="password" name="password" id="password" required/>
           </div>
           <div>
-          <label>re-enter password</label>
-          <input type="password" onChange={(e)=>{
+          <label htmlFor="re-enter_password">re-enter password</label>
+          <input id="re-enter_password" name="re-enter_password" type="password" onChange={(e)=>{
             if(e.target.value === document.getElementById('password').value){
               document.getElementById('register_submit').disabled =false;
               this.setState({hasError:false, err:null});
@@ -101,6 +101,10 @@ import Api from '../../services/api.service';
               this.setState({hasError:true, err:new Error('Password must match')});
             }
           }}/>
+          </div>
+          <div className="container">
+            <label id="newOrgLabel" htmlFor="newOrg">New Org</label>
+            <input id="newOrg" name="newOrg" type="checkbox"/> 
           </div>
           <div><label htmlFor="org">Organization</label>
           <input id="org" name="org" type="text" required/></div>

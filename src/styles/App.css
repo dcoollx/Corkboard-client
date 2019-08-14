@@ -8,7 +8,7 @@ main, #root, .App, html, body{
   font-size: 36px;
   font-family: 'Nunito', sans-serif;
 }
-input, textarea{
+input, textarea, select{
   line-height: 36px;
   font-size: 32px;
 }

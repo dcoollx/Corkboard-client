@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './styles/App.css';
 import tokenService from './services/token.service';
+import Settings from './components/settings';
 import Main from './components/main/main';
 import Login from './components/login/login';
 import NoticePage from './components/main/announcements/NoticePage/noticePage';
@@ -18,8 +19,9 @@ Modal.setAppElement('#root');
 class App extends React.Component {
   state = {
     org:JSON.parse(localStorage.getItem('orgInfo')) || {orgId:0,orgName:'Not connected to an org'},
+    team:JSON.parse(localStorage.getItem('team')) || {id:0,team_name:'Not connected to an team'},
     notices:[],
-    modalIsOpen:true, 
+    modalIsOpen:false, 
     hasError:false,
     err:null
   };
@@ -71,7 +73,6 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state.notices)
   return ( 
     <main className="App main-container ">
       <Modal
@@ -81,18 +82,9 @@ class App extends React.Component {
     className="settings"
     overlayClassName="Overlay"
     >
-      <h3>Settings</h3>
-      <ul>
-      <li><button className="settings_button"> Create a Team</button></li>
-      <li><button className="settings_button">Join a Team</button></li>
-      <li><button className="settings_button">Notice Archive</button></li>
-      <li><button className="settings_button" onClick ={(e)=>{
-        tokenService.clearAuthToken();
-        this.closeSettings();
-      }}>logout</button></li>
-      </ul>
+      <Settings closeSettings={this.closeSettings}/>
     </Modal>
-    <Route path="/" render={(props)=><Header {...props} openSettings={this.openSettings} orgInfo = {this.state.org}/>}/>
+    <Route path="/" render={(props)=><Header {...props} openSettings={this.openSettings} orgInfo = {this.state.org} team = {this.state.team}/>}/>
     <Route exact path="/" render={(props)=>{
         if(token_service.hasAuthToken())
           return(
