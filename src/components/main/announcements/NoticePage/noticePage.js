@@ -25,7 +25,7 @@ export default class NoticePage extends React.Component{
     
     Api.doFetch(`notices/${this.props.match.params.id}`).then((notice)=>{
       this.setState({notice},()=>document.getElementById('content').innerHTML = this.markdown.makeHtml(this.state.notice.content));
-    }).catch(err=>this.setState({hasError:true,err}));
+    }).catch(err=>err.then((err)=>this.setState({hasError:true,err})));
     
     Api.doFetch(this.state.noticeNumber +'/comments')//todo add options to include key
       .then((comments)=>{
@@ -35,13 +35,13 @@ export default class NoticePage extends React.Component{
           comments:comments
         });
 
-      }).catch(err=>this.setState({hasError:true,err:err}));
+      }).catch(err=>err.then((err)=>this.setState({hasError:true,err:new Error(err.error)})));
   }
   postComment = (content) =>{//comment requires content, created by(int), org(?), posted_on(init)
     let options ={
       method:'POST',
       headers:new Headers({'content-type':'application/json'}),
-      body: JSON.stringify({content,created_by:1,posted_on:this.state.noticeNumber})
+      body: JSON.stringify({content,posted_on:this.state.noticeNumber})
     };
     Api.doFetch(this.state.noticeNumber + '/comments',options)
     .then(res=>{
@@ -52,7 +52,7 @@ export default class NoticePage extends React.Component{
       });
 
 
-    }).catch(err=>this.setState({hasError:true,err:err}));
+    }).catch(err=>err.then((err)=>this.setState({hasError:true,err:new Error(err.error)})));
   }
   //todo, make this a fetch to get commets from server, for now using testdata
   render(){
@@ -62,7 +62,7 @@ export default class NoticePage extends React.Component{
   });
   return(
   <div id="noticePage" className=" col-center row-center container ">
-   {this.state.hasError && <p className="error col-full" >this.state.err.toString()</p>}
+   {this.state.hasError && <p className="error col-full" >{this.state.err.message}</p>}
    <div className="notice-content col-full">
     <h2 className="col-center">{this.state.notice.title}</h2>
     <div className="content col-full" id="content"></div>

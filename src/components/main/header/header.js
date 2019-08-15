@@ -10,7 +10,7 @@ export default function(props){
       {props.orgInfo.orgName}<br/>
       <p style={{'fontSize':'40%'}}>{props.team.team_name}</p>
       </div>
-      {tokenService.hasAuthToken() && <button className="col-right" onClick={()=>props.openSettings()}>&#9776;</button>}
+      {tokenService.hasAuthToken() && <button id="settings_button" className="col-right" onClick={()=>props.openSettings()}>&#9776;</button>}
       {props.history.location.pathname === '/' && tokenService.hasAuthToken() && <button onClick={(e)=>props.history.push('/newNotice')} id="add_Notice">+</button>}
     </nav>
   );

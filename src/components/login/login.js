@@ -16,20 +16,21 @@ export default class Login extends React.Component{
       <form className="col-center" onSubmit={(e)=>{
         e.preventDefault();
         this.props.signIn(e.target.user_name.value,e.target.password.value)
-          .then((x)=>this.props.history.push('/')).catch((err)=>{
-            console.log(err);
-            this.setState({hasError:true,err:err})
+          .then((x)=>this.props.history.push('/'))
+          .catch((err)=>{
+            console.log(err)
+            err.then(err=>this.setState({hasError:true,err:err.error}))
           });
         //then->
         
       }}>
         <div>
           <label htmlFor="user_name">Username</label><br/>
-          <input type="test" name="user_name" id="user_name" />
+          <input type="test" name="user_name" id="user_name" required />
         </div>
         <div>
           <label htmlFor="password">password</label><br/>
-          <input type="password" name="password" id="password"/>
+          <input type="password" name="password" id="password" required/>
         </div>
         <div className="login-controls container">
           <button className="col-1" type="submit">Sign in</button>

@@ -20,7 +20,7 @@ export default class Settings extends React.Component{
         };
         Api.doFetch('teams',options).then((res)=>{
           console.log(res);
-          this.setState({team:res});
+          this.props.changeTeam(res);
           localStorage.setItem('team',JSON.stringify(res));
           this.props.closeSettings();
         });
@@ -46,7 +46,7 @@ export default class Settings extends React.Component{
         };
         Api.doFetch('users',options).then((res)=>{
           let myTeam = this.state.teams.find((team)=>team.id === teamId);
-          this.setState({team: myTeam});
+          this.props.changeTeam(myTeam);
           localStorage.setItem('team',JSON.stringify(myTeam));
           this.props.closeSettings();
         });
@@ -60,7 +60,7 @@ export default class Settings extends React.Component{
             body: JSON.stringify({update:{team:null}})
           };
           Api.doFetch('users',options).then((res)=>{
-            this.setState({team:{id:0,team_name:'Not connected to an team'}});
+            this.props.changeTeam({id:0,team_name:'Not connected to an team'});
             localStorage.removeItem('team');
             this.props.closeSettings();
           });
@@ -69,6 +69,7 @@ export default class Settings extends React.Component{
       <li><button className="settings_button">Notice Archive</button></li>
       <li><button className="settings_button" onClick ={(e)=>{
         tokenService.clearAuthToken();
+        window.location.assign('/');
         this.props.closeSettings();
       }}>logout</button></li>
       </ul>

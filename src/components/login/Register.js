@@ -12,18 +12,24 @@ import Api from '../../services/api.service';
      if(!form.newOrg.checked)
       org = await this.checkIfName(org.value,org);
     else{
-      org = await Api.doFetch('/organizations',{method:'POST',headers:new Headers('content-type','application/json'),body:JSON.stringify(org.value)})
+      let options = {
+        method:'POST',
+        headers: new Headers({'Content-type':'application/json'}),
+        body:JSON.stringify({org_name:org.value})
+      };
+      org = await Api.doFetch('register/orgs',options);
       }
      window.org = org;
      if(org){//returns org id if it exsist and false if it doesnt
         
      //todo input validation
-     let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org, user_position:position.value};
+     let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org:org[0].id, user_position:position.value};
      let options ={
        method:'POST',
        headers: new Headers({'Content-type':'application/json'}),
        body: JSON.stringify(newUser)
      };
+     console.log('code gets here')
      Api.doFetch('register/user',options)
       .then(res=>{
         this.setState({hasError:false,err:null});

@@ -1,4 +1,14 @@
-#header > button{
+#add_Notice{
+  background-color: var(--accent-dark);
+  position: fixed;
+  bottom: 10px;
+  right:10px;
+  border-radius: 100px;
+  width:75px;
+  line-height: 75px;
+  font-size:75px;
+}
+#settings_button{
   color:white;
   text-decoration: none;
   background-color: rgba(255,255,255,0);
@@ -36,13 +46,7 @@
 .comment-content:before,.comment-content:after{
   content: '"'
 }
-#add_Notice{
-  background-color: var(--accent-dark);
-  position: absolute;
-  bottom: 10px;
-  right:10px;
-  border-radius: 25px;
-}
+
 @media only screen and (min-width:640px){
   #header{
     height:50%;

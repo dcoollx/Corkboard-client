@@ -23,9 +23,10 @@ export default class NewNotice extends React.Component{
       body: JSON.stringify({title,content,created_by:1,level})
     };
     Api.doFetch('notices',options).then((resp)=>{
+      this.props.addNotice(resp);
       this.props.history.push('/');
     }).catch(err=>{
-      this.setState({hasError:true,err:err.message});
+      err.then(err=>this.setState({hasError:true,err:err.error}))
     });
   }
   preview = (text)=>{
