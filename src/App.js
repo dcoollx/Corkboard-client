@@ -1,13 +1,11 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import './styles/App.css';
 import tokenService from './services/token.service';
 import Settings from './components/settings';
-import Main from './components/main/main';
 import Login from './components/login/login';
 import NoticePage from './components/main/announcements/NoticePage/noticePage';
 import NewNotice from './components/newNotice/newNotice';
-import {testNotices} from './test/demoData';
 import token_service from './services/token.service';
 import Api from './services/api.service';
 import Register from './components/login/Register';

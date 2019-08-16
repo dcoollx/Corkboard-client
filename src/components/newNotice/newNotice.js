@@ -1,5 +1,4 @@
 import React from 'react';
-import token_service from '../../services/token.service';
 import Api from '../../services/api.service';
 import showdown from 'showdown';
 //import {Link, NavLink} from 'react-router-dom';

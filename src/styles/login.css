@@ -5,6 +5,7 @@
   grid-column: 1/span 5;
   height:100%;
   margin-top:-25px;
+  
 
 }
 #login > div > h2, .error{
@@ -24,5 +25,7 @@
   #login{
     grid-column: 2/span 3;
     height:80%;
+    width:50%;
+    margin:auto;
   }
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import Api from '../../services/api.service';
+import validator from '../../services/inputValidation.service';
 
  export default class Register extends React.Component{
    state={
      isNewOrg:false,
      hasError:true,
-     err:new Error('Password must match')
+     err:'Password must match'
    };
    handleSubmit = async (form) => {
      let {display_name, user_name, password, org, position} = form;
@@ -21,8 +22,6 @@ import Api from '../../services/api.service';
       }
      window.org = org;
      if(org){//returns org id if it exsist and false if it doesnt
-        
-     //todo input validation
      let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org:org[0].id, user_position:position.value};
      let options ={
        method:'POST',
@@ -37,9 +36,7 @@ import Api from '../../services/api.service';
       })
       .catch(err=>this.setState({hasError:true,err}))
     }else{
-      //this.setState({hasError:true,err:new Error('That Org doenst exist, do you want to create a new org?')})
-      //first create new
-      alert('that org doesnt exist');
+      this.setState({hasError:true,err:'that org doesnt exist'});
 
     }
 
@@ -67,7 +64,7 @@ import Api from '../../services/api.service';
     return(
       <div id="register" className=" container col-center row-full">
         <div className="col-center"> 
-      {this.state.hasError && <p className="error col-center">{this.state.err.message}</p>}
+      {this.state.hasError && <p className="error col-center">{this.state.err}</p>}
       <h2 className="col-center">Sign-Up</h2> 
       </div>
         <form className="col-center" onSubmit = {(e)=>{
@@ -94,7 +91,13 @@ import Api from '../../services/api.service';
           </div>
           <div>
           <label htmlFor="password">password</label>
-          <input type="password" name="password" id="password" required/>
+          <input onChange={(e)=>{
+                if(validator(e.target.value))
+                  this.setState({hasError:false,err:''});
+                else
+                this.setState({hasError:true,err:'Weak Password'});
+              
+          }} type="password" name="password" id="password" required/>
           </div>
           <div>
           <label htmlFor="re-enter_password">re-enter password</label>
@@ -104,7 +107,7 @@ import Api from '../../services/api.service';
               this.setState({hasError:false, err:null});
             }else{
               document.getElementById('register_submit').disabled =true;
-              this.setState({hasError:true, err:new Error('Password must match')});
+              this.setState({hasError:true, err:'Password must match'});
             }
           }}/>
           </div>

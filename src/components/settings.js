@@ -3,7 +3,7 @@ import Api from '../services/api.service';
 import tokenService from '../services/token.service';
 export default class Settings extends React.Component{
   state={
-    teamOptions : [<option>There are no Teams For Your Org</option>],
+    teamOptions : [<option key="0">There are no Teams For Your Org</option>],
   }
   render(){
   return (
@@ -27,10 +27,12 @@ export default class Settings extends React.Component{
       }}><input name="Cteam" className="team" id="Cteam" type="text" placeholder="team name" required/><button>Create Team</button></form>
       {!localStorage.getItem('team') && <li><button className="settings_button" onClick={(e)=>{
         Api.doFetch('teams').then(teams=>{
+          if(teams.length >=1){
           this.setState({teams:teams,
             teamOptions : teams.map((team,index)=>{
-            return(<option key={index} Value={team.id}>{team.team_name}</option>);
+            return(<option key={index} value={team.id}>{team.team_name}</option>);
           })})
+        }
 
         });
         document.getElementById('join_team').style.display = 'block'}
