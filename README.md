@@ -5,7 +5,11 @@ The Company Message App
 
 ___
 ![excited scream](https://media3.giphy.com/media/7eAvzJ0SBBzHy/source.gif)
+
+
 ###welcome to corkboard, the _easiest_ way to communicate to your team!
+
+
 ###How to use corkboard.
 1. make an Account (_wait i think you did that part already_) (o_o)
 2. create a team.
