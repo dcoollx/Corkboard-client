@@ -1,24 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#CorkBoard
+___
+The Company Message App
+#Welcome to CorkBoard!
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-
+___
+![excited scream](https://media3.giphy.com/media/7eAvzJ0SBBzHy/source.gif)
+###welcome to corkboard, the _easiest_ way to communicate to your team!
+###How to use corkboard.
+1. make an Account (_wait i think you did that part already_) (o_o)
+2. create a team.
+    1. open settings
+    2. click create a team
+    3. Post a message!
+        - use the [+](\'/newNotice\') button to create a Messages just like this one.
+        - Coarboard Messages supports HTML &[Markdown](https://www.markdowntutorial.com/)
+    4. Comment on Messages\n\u003eafter a Message is created, you team members can comment on them!
+    5. Have Fun!
+    
+    
+Router
 
 

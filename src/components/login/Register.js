@@ -11,7 +11,7 @@ import validator from '../../services/inputValidation.service';
    handleSubmit = async (form) => {
      let {display_name, user_name, password, org, position} = form;
      if(!form.newOrg.checked)
-      org = await this.checkIfName(org.value,org);
+      org.id = await this.checkIfName(org.value,org);
     else{
       let options = {
         method:'POST',
@@ -19,10 +19,12 @@ import validator from '../../services/inputValidation.service';
         body:JSON.stringify({org_name:org.value})
       };
       org = await Api.doFetch('register/orgs',options);
+      
       }
      window.org = org;
      if(org){//returns org id if it exsist and false if it doesnt
-     let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org:org[0].id, user_position:position.value};
+     let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org:org.id, user_position:position.value};
+     console.log(newUser);
      let options ={
        method:'POST',
        headers: new Headers({'Content-type':'application/json'}),
@@ -64,7 +66,7 @@ import validator from '../../services/inputValidation.service';
     return(
       <div id="register" className=" container col-center row-full">
         <div className="col-center"> 
-      {this.state.hasError && <p className="error col-center">{this.state.err.message}</p>}
+      {this.state.hasError && <p className="error col-center">{this.state.err}</p>}
       <h2 className="col-center">Sign-Up</h2> 
       </div>
         <form className="col-center" onSubmit = {(e)=>{
