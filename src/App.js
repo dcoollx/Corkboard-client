@@ -82,7 +82,6 @@ class App extends React.Component {
       <Settings closeSettings={this.closeSettings} changeTeam={this.changeTeam}/>
     </Modal>
     <Route path="/" render={(props)=><Header {...props} openSettings={this.openSettings} orgInfo = {this.state.org} team = {this.state.team}/>}/>
-    <p className=" error col-center">{this.state.hasError && this.state.err.message}</p>
     <Route exact path="/" render={(props)=>{
         if(token_service.hasAuthToken())
           return(

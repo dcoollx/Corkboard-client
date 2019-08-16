@@ -34,7 +34,7 @@ import validator from '../../services/inputValidation.service';
         this.setState({hasError:false,err:null});
         this.props.history.push('/');
       })
-      .catch(err=>this.setState({hasError:true,err}))
+      .catch(err=> err.then(err=>this.setState({hasError:true,err:err.error})))
     }else{
       this.setState({hasError:true,err:'that org doesnt exist'});
 
@@ -64,7 +64,7 @@ import validator from '../../services/inputValidation.service';
     return(
       <div id="register" className=" container col-center row-full">
         <div className="col-center"> 
-      {this.state.hasError && <p className="error col-center">{this.state.err}</p>}
+      {this.state.hasError && <p className="error col-center">{this.state.err.message}</p>}
       <h2 className="col-center">Sign-Up</h2> 
       </div>
         <form className="col-center" onSubmit = {(e)=>{
