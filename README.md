@@ -18,7 +18,7 @@ ___
     5. Have Fun!
     
     
-![login]('screenshots/corkboard_login.PNG')
-![new Notice]('screenshots/newNotice.PNG')
+![login](screenshots/corkboard_login.PNG)
+![new Notice](screenshots/newNotice.PNG)
 
 
