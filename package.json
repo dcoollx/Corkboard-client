@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gsap": "^2.1.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-modal": "^3.9.1",
@@ -15,8 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "predeploy":"npm run build",
-    "deploy":"now ./build -n corkboard",
+    "predeploy": "npm run build",
+    "deploy": "now ./build -n corkboard",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
