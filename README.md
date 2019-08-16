@@ -1,17 +1,17 @@
-#CorkBoard
+# CorkBoard
 ___
 The Company Message App
-#Welcome to CorkBoard!
+# Welcome to CorkBoard!
 
 ___
 ![excited scream](https://media3.giphy.com/media/7eAvzJ0SBBzHy/source.gif)
 
 
-###welcome to corkboard, the _easiest_ way to communicate to your team!
+### welcome to corkboard, the _easiest_ way to communicate to your team!
 
 
-###How to use corkboard.
-1. make an Account (_wait i think you did that part already_) (o_o)
+### How to use corkboard.
+1. make an Account 
 2. create a team.
     1. open settings
     2. click create a team
