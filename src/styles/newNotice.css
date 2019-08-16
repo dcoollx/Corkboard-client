@@ -8,9 +8,15 @@
   height:100vh;
   grid-column-start: 1;
 }
+
 #preview{
   border: 1px solid black;
+  margin-bottom: 25px;
+  margin-top:25px;
 
+}
+.page_title{
+  height:fit-content;
 }
 #newNotice > textarea{
   width:100%;
@@ -18,7 +24,7 @@
 }
 @media only screen and (min-width:640px){
  #newNotice{
-   width:100%;
+   width :85%;
    grid-column-start: 2;
    padding:80px;
  }

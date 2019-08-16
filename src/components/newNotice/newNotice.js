@@ -36,18 +36,18 @@ export default class NewNotice extends React.Component{
   }
   render(props){
   return(
-    <div id="newNotice" className="container col-center row-center">
-      <div className="col-center">
-        <h2>New Notice</h2>
-      {this.state.hasError && <p className="error">{this.state.err.message}</p>}
+    <div id="newNotice" className="main-container col-center row-center">
+      <div className="col-center page_title">
+        <h2 className="">New Notice</h2>
+        {this.state.hasError && <p className="error">{this.state.err.message}</p>}
       </div>
       <form className="col-center" onSubmit={(e)=>{
         e.preventDefault();
         this.handleSubmit(e.target);
         }} onReset={(e)=>this.props.history.push('/')}>
           <div>
-        <label htmlFor="title">Title</label><br/>
-        <input type="text" id="title" name="title" placeholder="title" required/><br/>
+        <label htmlFor="title">Subject</label><br/>
+        <input type="text" id="title" name="title" placeholder="Subject" required/><br/>
         </div>
         <div>
         <label htmlFor="level">Send to?</label>
@@ -59,7 +59,7 @@ export default class NewNotice extends React.Component{
         </select>
         </div>
         <div className="container">
-        <label className="col-full" htmlFor="content">content</label><br/>
+        <label className="col-full" htmlFor="content">content</label>
         <textarea className="col-full" id="content" name="content" required onChange={(e)=>this.preview(e.target.value)}/>
         <div className="col-full" id="preview" contentEditable={false}></div>
         </div><br/>

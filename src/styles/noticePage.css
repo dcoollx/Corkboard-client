@@ -8,11 +8,29 @@
   grid-column-start: 1;
   
 }
+.page_title{
+  margin:0;
+}
 #noticePage-controls{
   width:100%;
 }
+
+.content{
+  border: 1px solid black;
+}
 .comments{
   font-size: 50%;
+ text-align: right;
+ font-size: 50%;
+}
+
+.by{
+  font-size: 75%;
+  color:grey;
+  
+}
+.comment-content:before,.comment-content:after{
+  content: '"'
 }
 
 

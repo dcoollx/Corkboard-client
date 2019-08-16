@@ -14,9 +14,25 @@
   overflow: hidden;
 }
 .status{
-  background-color:red;
+  
   height: 50%;
   margin:-10px;
+}
+.level-1{
+background-color:red;
+}
+.level-2{
+  background-color:blue;
+}
+.level-3{
+  background-color:green
+}
+.level-4{
+  background-color:yellow;
+
+}
+.level-5{
+  background-color:pink;
 }
 
 @media only screen and (min-width:640px){
