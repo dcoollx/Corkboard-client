@@ -17,7 +17,7 @@ ___
     2. click create a team
     3. Post a message!
         - use the [+](\'/newNotice\') button to create a Messages just like this one.
-        - Coarboard Messages supports HTML &[Markdown](https://www.markdowntutorial.com/)
+        - Coarboard Messages supports HTML & [Markdown](https://www.markdowntutorial.com/)
     4. Comment on Messages\n\u003eafter a Message is created, you team members can comment on them!
     5. Have Fun!
     

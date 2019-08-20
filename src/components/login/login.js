@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import validator from '../../services/inputValidation.service';
 export default class Login extends React.Component{
   state = {
       hasError:false,
