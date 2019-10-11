@@ -66,7 +66,7 @@ export default class Settings extends React.Component{
           });
         }}>Leave Team</button>
       </div>
-      <li><button className="settings_button">Notice Archive</button></li>
+      {/* <li><button className="settings_button">Notice Archive</button></li> */}
       <li><button className="settings_button" onClick ={(e)=>{
         tokenService.clearAuthToken();
         window.location.assign('/');

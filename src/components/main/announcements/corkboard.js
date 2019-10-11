@@ -7,7 +7,7 @@ export default class Corkboard extends React.Component{
   constructor(props){
     super(props);
     this.notices = [];
-    this.animations = new TimelineLite({paused:true});
+    this.animations = new TimelineLite();
     }
   componentDidMount(){
     //animations.noticeEnter.play();

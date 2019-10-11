@@ -29,7 +29,7 @@ export default class Login extends React.Component{
           <input type="test" name="user_name" id="user_name" required />
         </div>
         <div>
-          <label htmlFor="password">password</label><br/>
+          <label htmlFor="password">Password</label><br/>
           <input type="password" name="password" id="password" required/>
         </div>
         <div className="login-controls container">
