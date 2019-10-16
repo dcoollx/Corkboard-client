@@ -1,0 +1,33 @@
+#landing{
+  background-color: white;
+  box-shadow: 10px 10px var(--shadow);
+  padding:80px;
+  height:100%;
+  width:80vw;
+  margin-top:0px;
+}
+.landing_div{
+  display: grid,
+}
+h1{
+  margin: 0px;
+}
+q{
+  font-size: 15px;
+  margin-top:-10px;
+}
+#landing  img{
+  height: 300px;
+}
+#landing_header{
+  margin-bottom: 50px;
+}
+.landing_highlight{
+  background: radial-gradient(0deg, grey,white);
+  color:white;
+}
+@media only screen  and (min-width: 760px){
+#landing{
+  margin-top:-100px;
+}
+}

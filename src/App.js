@@ -4,6 +4,7 @@ import './styles/App.css';
 import tokenService from './services/token.service';
 import Settings from './components/settings';
 import Login from './components/login/login';
+import Landing from './components/Landing/Landing';
 import NoticePage from './components/main/announcements/NoticePage/noticePage';
 import NewNotice from './components/newNotice/newNotice';
 import token_service from './services/token.service';
@@ -88,8 +89,9 @@ class App extends React.Component {
           <Corkboard {...props} data={this.state.notices}/>
           );
         else
-            return <Login {...props} signIn = {this.signIn}/>
+            return <Landing/>
         }}/>
+      <Route exact path="/login" render={(props)=><Login {...props} signIn = {this.signIn}/>}/>
       <Route exact path="/register" component = {Register}/>
       <Route exact path="/notice/:id" render={(props)=>{
         return(<NoticePage {...props} notice={this.state.notices.find((notice)=>props.match.params.id === String(notice.id))}/>);
