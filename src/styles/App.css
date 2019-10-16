@@ -35,6 +35,14 @@ h1, h2, h3, h4{
   grid-template-rows: 15vh auto auto auto auto auto auto auto  ;
   row-gap: 5%; 
 }
+#copyright{
+  bottom: 0px;
+}
+.small_container{
+  display:grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 0px;
+}
 .container{
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -43,19 +51,22 @@ h1, h2, h3, h4{
 .col-full{
   grid-column: span 5;
 }
-.col-center,.col-1, .col-half, .col-right{
+.col-center,.col-1, .col-half, .col-left, .col-right{
   grid-column: 2/span 3;
 }
 @media only screen and (min-width:640px){
 
   .main-container{
     display: grid;
+    width: 100vw;
     grid-template-columns: auto auto auto auto auto;
     grid-template-rows: 25vh auto auto auto auto auto auto auto  ;
     row-gap: 2%;
     column-gap: 10px; 
   }
-  
+.col-left{
+  grid-column: 1;
+  }
 .col-full{
   grid-column: span 5;
 }
