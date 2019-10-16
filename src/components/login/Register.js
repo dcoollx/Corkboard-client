@@ -1,13 +1,30 @@
 import React from 'react';
 import Api from '../../services/api.service';
 import validator from '../../services/inputValidation.service';
+import seima from 'siema';
 
  export default class Register extends React.Component{
+   componentDidMount(){
+    this.seima = new seima({
+      //draggable:false,
+    });
+   }
    state={
      isNewOrg:false,
      hasError:true,
-     err:'Password must match'
+     err:'Password must match',
+     newUser : {},
+     nameTaken : true,
+     //todo make controled input
    };
+   handleNext(form){
+     let user = this.state.newUser;//copy existing data if there is some;
+     Object.keys(form).forEach(field=>{
+       user[form[field].name] = form[field].value;
+     });
+      this.setState({newUser:user});
+     this.seima.next();
+   }
    handleSubmit = async (form) => {
      let {display_name, user_name, password, org, position} = form;
      if(!form.newOrg.checked)
@@ -43,35 +60,29 @@ import validator from '../../services/inputValidation.service';
     }
 
    }
-   checkIfName=(name,org)=>{
+   checkIfName= async (name)=>{
+     let nameTaken = true;
      //!! this function returns true if it FAILS, meaning that name was not found
-     return fetch(`${Api.url}orgs?name=${name}`)
-     .then(res =>{
+      let res = await fetch(`${Api.url}orgs?name=${name}`,{method:'head'})
        if(res.status === 404){
-            return false;
+            nameTaken = false;
        }
-      else if(res.ok)
-        return res.json();
-      else
-        return Promise.reject(new Error(res.json()))
-     }).then(org=>{
-      if(!org)
-        return false;
-      else
-        return org.id
-    });
-     //todo
+       else if(res.ok){
+        nameTaken = true;
+       }
+       this.setState({nameTaken});
+      
    }
   render(){
     return(
       <div id="register" className=" container col-center row-full">
-        <div className="col-center"> 
       {this.state.hasError && <p className="error col-center">{this.state.err}</p>}
-      <h2 className="col-center">Sign-Up</h2> 
-      </div>
+       <h2 className="col-center">Sign-Up</h2> 
+      <div className="siema  container col-center">
+     
         <form className="col-center" onSubmit = {(e)=>{
           e.preventDefault();
-          this.handleSubmit(e.target);
+          this.handleNext(e.target);
         }}>
           <div>
           <label htmlFor="display_name">Display Name</label><br/>
@@ -113,21 +124,41 @@ import validator from '../../services/inputValidation.service';
             }
           }}/>
           </div>
-          <div className="container">
-            <label id="newOrgLabel" htmlFor="newOrg">New Org</label>
-            <input id="newOrg" name="newOrg" type="checkbox"/> 
-          </div>
-          <div><label htmlFor="org">Organization</label>
-          <input id="org" name="org" type="text" required/></div>
-          {this.state.isNewOrg && <div>
-            <label>Organization name</label>
-            <input type='text'/>
-          </div>}
+          
           <div className="container register-controls"> 
           <button id="register_submit" className="col-1" type="submit" disabled>Submit</button>
           <button className="col-right" id="reset" type="reset"onClick={(e)=>this.props.history.push('/')}>cancel</button>
           </div>
         </form>
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+          this.handleNext(e.target)
+        }}
+        
+        onReset={(e)=>{
+          this.seima.prev();
+        }}>
+        <div className="container">
+            <label id="newOrgLabel" htmlFor="newOrg">New Org</label>
+            <input id="newOrg" name="newOrg" type="checkbox" onChange={(e)=>{
+              this.setState({isNewOrg : e.target.checked});
+            }}/> 
+          </div>
+          {!this.state.isNewOrg && <div><label htmlFor="org">Organization Code</label>
+          <input id="org_code" name="org_code" type="text" required/></div>}
+          {this.state.isNewOrg && <div>
+            <label>Organization name</label>
+            <input name="new_org_name" id="new_org_name" onChange={(e)=> this.checkIfName(e.target.value)} type='text' required placeholder="Organization name"/>          </div>}
+            {this.state.isNewOrg && this.state.nameTaken && <p className="error">Can't Use That Name</p>}
+          <div className="small_container">
+          <button type="reset">Go Back</button>
+          <div></div>
+          <button type="submit" disabled = {this.state.nameTaken}>Submit</button>
+          
+          
+          </div>
+        </form>
+        </div>
       </div>
     );
   }
