@@ -2,11 +2,15 @@
   background-color: white;
   box-shadow: 5px 5px var(--shadow);
   padding-top:40px;
+  width:65vw;
   padding-left: 80px;
   padding-right: 80px;
   padding-bottom: 40px;
   grid-column: 1/span 5;
 
+}
+#register form{
+  width:65vw;
 }
 .register-controls{
   margin-top:50px;
@@ -32,9 +36,10 @@ button:disabled{
 @media only screen and (min-width:640px){
   #register{
     grid-column: 2/span 3;
+    margin:auto;
   }
-#newOrg{
-margin:auto;
-height: 28px;
-}
+  #newOrg{
+    margin:auto;
+    height: 28px;
+  }
 }

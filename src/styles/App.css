@@ -31,7 +31,7 @@ h1, h2, h3, h4{
 }
 .main-container{
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: 20% auto auto auto 20%;
   grid-template-rows: 15vh auto auto auto auto auto auto auto  ;
   row-gap: 5%; 
 }
@@ -59,7 +59,7 @@ h1, h2, h3, h4{
   .main-container{
     display: grid;
     width: 100vw;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns:  auto auto auto auto auto ;
     grid-template-rows: 25vh auto auto auto auto auto auto auto  ;
     row-gap: 2%;
     column-gap: 10px; 

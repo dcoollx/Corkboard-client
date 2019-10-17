@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Api from '../../services/api.service';
 import validator from '../../services/inputValidation.service';
 import seima from 'siema';
@@ -25,39 +26,33 @@ import seima from 'siema';
       this.setState({newUser:user});
      this.seima.next();
    }
+   createNewOrg = (org_name) =>{
+    let options = {
+            method:'POST',
+            headers: new Headers({'Content-type':'application/json'}),
+            body:JSON.stringify({org_name})
+          };
+          return Api.doFetch('register/orgs',options)
+          .then(res=>{
+            let user = this.state.newUser;
+            user.org = res[0];
+              this.setState({newUser:user})
+          }).catch(err=>this.setState({err}))
+   }
    handleSubmit = async (form) => {
-     let {display_name, user_name, password, org, position} = form;
-     if(!form.newOrg.checked)
-      org.id = await this.checkIfName(org.value,org);
-    else{
-      let options = {
-        method:'POST',
-        headers: new Headers({'Content-type':'application/json'}),
-        body:JSON.stringify({org_name:org.value})
-      };
-      org = await Api.doFetch('register/orgs',options);
-      
-      }
-     window.org = org;
-     if(org){//returns org id if it exsist and false if it doesnt
-     let newUser = {display_name:display_name.value, user_name:user_name.value, password:password.value, org:org.id, user_position:position.value};
-     console.log(newUser);
+     let {display_name, user_name, password, org, user_position} = this.state.newUser;
+     console.log(org);
      let options ={
        method:'POST',
        headers: new Headers({'Content-type':'application/json'}),
-       body: JSON.stringify(newUser)
+       body: JSON.stringify({display_name, user_name, password, org:org.id, user_position})
      };
-     console.log('code gets here')
-     Api.doFetch('register/user',options)
+     return Api.doFetch('register/user',options)
       .then(res=>{
         this.setState({hasError:false,err:null});
-        this.props.history.push('/');
       })
       .catch(err=> err.then(err=>this.setState({hasError:true,err:err.error})))
-    }else{
-      this.setState({hasError:true,err:'that org doesnt exist'});
-
-    }
+   
 
    }
    checkIfName= async (name)=>{
@@ -89,8 +84,8 @@ import seima from 'siema';
           <input type="text" name="display_name" id="display_name" required/>
           </div>
           <div>
-          <label htmlFor="position">Position</label><br/>
-          <select name="position" id="position">
+          <label htmlFor="user_position">Position</label><br/>
+          <select name="user_position" id="user_position">
             <option value="1">Junior</option>
             <option value="2">Senior</option>
             <option value="3">Management</option>
@@ -125,14 +120,20 @@ import seima from 'siema';
           }}/>
           </div>
           
-          <div className="container register-controls"> 
-          <button id="register_submit" className="col-1" type="submit" disabled>Submit</button>
-          <button className="col-right" id="reset" type="reset"onClick={(e)=>this.props.history.push('/')}>cancel</button>
+          <div className="small_container register-controls">
+          <button className="col-left" id="reset" type="reset"onClick={(e)=>this.props.history.push('/')}>cancel</button> 
+          <button id="register_submit" className="col-right" type="submit" disabled>Next</button>
           </div>
         </form>
-        <form onSubmit={(e)=>{
+        <form onSubmit={async (e)=>{
           e.preventDefault();
-          this.handleNext(e.target)
+          this.handleNext(e.target);
+          if(this.state.newUser.new_org_name)
+            await this.createNewOrg(this.state.newUser.new_org_name)
+          else{
+              //look up existing org
+            }
+         await this.handleSubmit();//todo maybe use promise.all to cancel if either fails
         }}
         
         onReset={(e)=>{
@@ -158,6 +159,12 @@ import seima from 'siema';
           
           </div>
         </form>
+        <div>
+          <progress/>
+          <h3>Welcome to [ORG NAME]</h3>
+          <p> Your Organization's invite code is [code]</p>
+          <p>Click <Link to="/login">Here</Link> to Log in</p>
+        </div>
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 #landing{
+  box-sizing: border-box;
   background-color: white;
   box-shadow: 10px 10px var(--shadow);
   padding:80px;
@@ -29,5 +30,7 @@ q{
 @media only screen  and (min-width: 760px){
 #landing{
   margin-top:-100px;
+  padding: 100px;
+  margin:auto;
 }
 }
