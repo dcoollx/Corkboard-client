@@ -14,8 +14,10 @@
   background-color: rgba(255,255,255,0);
   border:none;
 }
-#header > * > a{
+#header a{
   color: white;
+  text-decoration: none;
+  font-size: 16px;
 }
 #header{
   background-color:var(--accent-dark);
@@ -27,6 +29,7 @@
 }
 #logo{
   height: 36px;
+  display:none;
 }
 .nav-button {
   grid-column: 4;
@@ -35,10 +38,23 @@
   margin-right:10px;
   
 }
+.home{
+  display: inline;
+  line-height: 10px;
+  word-wrap: break-word;
+  font-size: 24px;
+  overflow: hidden;
+  padding-right:25px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 
 
 @media only screen and (min-width:640px){
+  #logo{
+    display: inline;
+  }
   #header{
     height:50%;
   }
@@ -46,5 +62,8 @@
     grid-column: 4;
     margin-right:-25px
     
+  }
+  #header a{
+  font-size: 26px;
   }
 }

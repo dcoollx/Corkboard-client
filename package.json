@@ -9,14 +9,15 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "showdown": "^1.9.0"
+    "showdown": "^1.9.0",
+    "siema": "^1.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "predeploy":"npm run build",
-    "deploy":"now ./build -n corkboard",
+    "predeploy": "npm run build",
+    "deploy": "now ./build -n corkboard",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

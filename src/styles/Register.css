@@ -1,16 +1,16 @@
 #register{
   background-color: white;
   box-shadow: 5px 5px var(--shadow);
-  padding-top:40px;
-  padding-left: 80px;
-  padding-right: 80px;
-  padding-bottom: 40px;
   grid-column: 1/span 5;
+  padding: 20px;
 
 }
-.register-controls{
-  margin-top:50px;
+.seima > div{
+  width:100%;
 }
+/* #register form{
+  width:65vw;
+} */
 button:disabled{
   background-color: grey;
 
@@ -18,11 +18,19 @@ button:disabled{
 #register > div > h2, .error{
   margin:0px;
 }
-#register >form{
-  padding:30px;
+#register form{
+  width:85vw;
+  box-sizing: border-box;
+  margin-bottom: 50px;
 }
-#register > form > div > input, select{
+#org_form button{
+margin-top:50px;
+}
+#register div input, select{
   width:100%;
+}
+.register_controls button{
+  padding:25px;
 }
 #newOrg{
   margin:auto;
@@ -32,9 +40,20 @@ button:disabled{
 @media only screen and (min-width:640px){
   #register{
     grid-column: 2/span 3;
+    margin:auto;
+    max-width:65vw;
+    padding-top:40px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 40px;
   }
-#newOrg{
-margin:auto;
-height: 28px;
-}
+  #register form{
+    padding:30px;
+    margin:15px;
+    width:100%;
+  }
+  #newOrg{
+    margin:auto;
+    height: 28px;
+  }
 }

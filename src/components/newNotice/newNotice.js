@@ -59,7 +59,7 @@ export default class NewNotice extends React.Component{
         </div>
         <div className="container">
         <label className="col-full" htmlFor="content">content</label>
-        <textarea className="col-full" id="content" name="content" required onChange={(e)=>this.preview(e.target.value)}/>
+        <textarea wrap="hard" cols="15" className="col-full" id="content" name="content" required onChange={(e)=>this.preview(e.target.value)}/>
         <div className="col-full" id="preview" contentEditable={false}></div>
         </div><br/>
          <div className="container">

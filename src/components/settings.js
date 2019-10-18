@@ -9,6 +9,7 @@ export default class Settings extends React.Component{
   return (
     <div>
     <h3>Settings</h3>
+    <p>Org Code: {JSON.parse(localStorage.getItem('orgInfo')).orgCode}</p>
       <ul>
       {!localStorage.getItem('team') && <li><button className="settings_button" onClick={(e)=>document.getElementById('create_team').style.display = 'block'}> Create a Team</button></li>}
       <form id="create_team" onSubmit={(e)=>{
@@ -19,7 +20,6 @@ export default class Settings extends React.Component{
           body: JSON.stringify({team_name:e.target.Cteam.value})
         };
         Api.doFetch('teams',options).then((res)=>{
-          console.log(res);
           this.props.changeTeam(res);
           localStorage.setItem('team',JSON.stringify(res));
           this.props.closeSettings();
@@ -40,7 +40,6 @@ export default class Settings extends React.Component{
       <form id="join_team" onSubmit={(e)=>{
          e.preventDefault();
          let teamId = Number(e.target.Jteam.value);
-         console.log(teamId);
         let options = {
           method:'PATCH',
           headers: new Headers({'content-type':'application/json'}),

@@ -1,9 +1,10 @@
 import tokenService from "./token.service";
+import config from '../config';
 
 
 export default class Api{
   development = true;
-  static url = 'https://murmuring-island-24347.herokuapp.com/';
+  static url = config._API_ENDPOINT;
   static Api_Key = '';
   static doFetch(endpoint,options= {Method:'GET', headers:new Headers({'content-type':'application/json'})}){
     if(tokenService.hasAuthToken())
