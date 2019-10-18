@@ -2,7 +2,16 @@
 ___
 The Company Message App
 # Welcome to CorkBoard!
-
+## Tech Stack
+### frontend
+ - Reactjs
+ - Markdown
+ - Siema
+### backend
+ - Node
+ - express
+ - shortId
+ - Mocha
 ___
 ![excited scream](https://media3.giphy.com/media/7eAvzJ0SBBzHy/source.gif)
 
