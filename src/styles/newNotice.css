@@ -8,8 +8,11 @@
   height:100vh;
   grid-column-start: 1;
 }
-
+#newNotice #content, #preview{
+  max-width: 60vw;
+}
 #preview{
+  overflow: scroll;
   border: 1px solid black;
   margin-bottom: 25px;
   margin-top:25px;
