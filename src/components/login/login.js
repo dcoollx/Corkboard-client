@@ -18,7 +18,6 @@ export default class Login extends React.Component{
         this.props.signIn(e.target.user_name.value,e.target.password.value)
           .then((x)=>this.props.history.push('/'))
           .catch((err)=>{
-            console.log(err)
             err.then(err=>this.setState({hasError:true,err:err.error}))
           });
         //then->

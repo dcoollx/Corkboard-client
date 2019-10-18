@@ -1,11 +1,12 @@
 #landing{
   box-sizing: border-box;
+  padding:10px;
   background-color: white;
   box-shadow: 10px 10px var(--shadow);
-  padding:80px;
   height:100%;
-  width:80vw;
+  width:100vw;
   margin-top:0px;
+  grid-column: 1;
 }
 .landing_div{
   display: grid,
@@ -13,12 +14,19 @@
 h1{
   margin: 0px;
 }
+h3{
+  margin:10px;
+}
 q{
   font-size: 15px;
   margin-top:-10px;
 }
 #landing  img{
-  height: 300px;
+  height: 100px;
+  display:none;
+}
+.landing_sub{
+  font-size: 12px;
 }
 #landing_header{
   margin-bottom: 50px;
@@ -32,5 +40,14 @@ q{
   margin-top:-100px;
   padding: 100px;
   margin:auto;
+  width:80vw;
+  grid-column: 3;
+}
+#landing  img{
+  height: 300px;
+  display:block;
+}
+.landing_sub{
+  font-size: 24px;
 }
 }

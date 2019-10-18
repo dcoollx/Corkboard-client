@@ -10,8 +10,8 @@ export default function(props){
       
       <div>
         <Link to="/"><img id="logo" src={logo} alt="logo"/></Link>
-      {props.orgInfo.orgName}<br/>
-      <p style={{'fontSize':'40%'}}>{props.team.team_name}</p>
+      <h1 className="home">{props.orgInfo.orgName}</h1>
+      <p style={{'fontSize':'40%','margin': '0px'}}>{props.team.team_name}</p>
       </div>
       {!tokenService.hasAuthToken() && <div className="col-right"><Link to="/login">Log in</Link> | <Link to ="/register">New Users ?</Link></div>}
       {tokenService.hasAuthToken() && <button id="settings_button" className="col-right" onClick={()=>props.openSettings()}>&#9776;</button>}

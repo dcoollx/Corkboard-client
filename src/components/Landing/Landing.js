@@ -7,31 +7,32 @@ import browser from '../../images/browser.png';
 
 export default function Landing(){
   return(
-    <div id="landing" className="col-center row-center">
-      <div id="landing_header" className="small_container">
-        <div  className="">
-          <h1 >Corkboard</h1>
+    <div id="landing" className="container col-center row-center">
+      <div id="landing_header" className="col-full small_container">
+        <div  className="col-full small_container">
+          <div className="col-1"><h1 >Corkboard</h1>
           <q>The Inter-Organization Message management system</q>
-        </div> 
-         
-        <div className="landing_sub col-right">
+          </div>
+
+          <div className="landing_sub col-right">
         New here? <Link to="/register">create an account</Link><br/>
         Come here often? <Link to="/login">Login</Link>
         </div>
+        </div> 
       </div> 
-      <div className="small_container " >
+      <div className="small_container col-full  " >
         <h3 className="col-left">Share messsages with your whole Organization or just a single team</h3>
         <img className="col-right" src={connections_icon} alt="connections"/>
       </div>
-      <div className="small_container " >
+      <div className="small_container col-full  " >
       <img className="col-left" src={pictures} alt="pictures"/>
         <h3 className="col-right">Share photos and links</h3>
       </div>
-      <div className="small_container " >
+      <div className="small_container col-full  " >
         <h3 className="col-left">Craft Exciting notifications using HTML5 or markdown</h3>
         <img className="col-right" src={browser} alt="web browser"/>
       </div>
-      <footer className="small_container">
+      <footer className="small_container col-full ">
        <p id="copyright" className="col-right"> &copy; 2019 <a href="https://dcoollx.github.io/Portfolio">David Queen Jr</a></p>
       </footer>
       
