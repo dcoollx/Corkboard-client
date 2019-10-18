@@ -13,7 +13,7 @@ import seima from 'siema';
    state={
      isNewOrg:false,
      hasError:true,
-     err:'Password must match',
+     err:'',
      newUser : {},
      nameTaken : true,
      //todo make controled input
