@@ -39,9 +39,6 @@ margin-top:50px;
 
 @media only screen and (min-width:640px){
   #register{
-    grid-column: 2/span 3;
-    margin:auto;
-    max-width:65vw;
     padding-top:40px;
     padding-left: 80px;
     padding-right: 80px;

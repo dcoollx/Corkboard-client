@@ -13,7 +13,7 @@ export default function(props){
       <h1 className="home">{props.orgInfo.orgName}</h1>
       <p style={{'fontSize':'40%','margin': '0px'}}>{props.team.team_name}</p>
       </div>
-      {!tokenService.hasAuthToken() && <div className="col-right"><Link to="/login">Log in</Link> | <Link to ="/register">New Users ?</Link></div>}
+      {!tokenService.hasAuthToken() && <div className="col-right"><Link to="/login">log in</Link> | <Link to ="/register">register</Link></div>}
       {tokenService.hasAuthToken() && <button id="settings_button" className="col-right" onClick={()=>props.openSettings()}>&#9776;</button>}
       {props.history.location.pathname === '/' && tokenService.hasAuthToken() && <button onClick={(e)=>props.history.push('/newNotice')} id="add_Notice">+</button>}
     </nav>

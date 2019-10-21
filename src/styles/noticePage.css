@@ -1,12 +1,5 @@
 #noticePage{
-  background-color: white;
-  box-shadow: 5px 5px var(--shadow);
-  width:90vw;
-  height:100vh;
-  overflow: scroll;
-  padding: 25px;
-  grid-column-start: 1;
-  
+
 }
 .page_title{
   margin:0;
@@ -26,7 +19,8 @@
 
 .by{
   font-size: 75%;
-  color:grey;
+  color:white;
+  text-align:right;
   
 }
 .comment-content:before,.comment-content:after{
@@ -36,8 +30,7 @@
 
 @media only screen and (min-width:640px){
 #noticePage{
-  width:100%;
-  grid-column: 2/span 3;
+
 
 }
 .content{

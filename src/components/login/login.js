@@ -8,10 +8,10 @@ export default class Login extends React.Component{
   render(){
     
     return(
-    <div id="login" className=" container col-center row-center">
+    <div id="login" className=" container col-center ">
       <div className="col-center">
         {this.state.hasError && <p className="error">{this.state.err}</p>}
-        <h2>Log in</h2>
+        <h2>Log In</h2>
       </div>
       <form className="col-center" onSubmit={(e)=>{
         e.preventDefault();
@@ -32,8 +32,8 @@ export default class Login extends React.Component{
           <input type="password" name="password" id="password" required/>
         </div>
         <div className="login-controls container">
-          <button className="col-1" type="submit">Sign in</button>
-          <Link className="col-right" to='/register'>New user?</Link>
+          <button className="col-1" type="submit">Sign In</button>
+          <Link className="col-right" to='/register'>New User?</Link>
         </div>
       </form>
       
