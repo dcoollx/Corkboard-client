@@ -7,12 +7,12 @@ main, #root, .App, html, body{
   max-width: 100vw;
   box-sizing: border-box;
   background-image: url('../images/corkboard_img.jpg');
-  font-size: 16px;
+  font-size: 22px;
   font-family: 'Nunito', sans-serif;
 }
 input, textarea, select{
-  line-height: 36px;
-  font-size: 32px;
+/*   line-height: 36px;
+  font-size: 32px; */
 }
 
 button{
@@ -33,18 +33,24 @@ h1, h2, h3, h4{
 }
 .main-container{
   display: grid;
-  grid-template-columns: 20% auto auto auto 20%;
+  grid-template-columns: auto auto auto auto auto;
   grid-template-rows: 15vh auto auto auto auto auto auto auto  ;
   row-gap: 5%; 
 }
 #copyright{
   bottom: 0px;
 }
+footer{
+
+  padding:10px;
+
+}
 .page{
   background-color: white;
   box-sizing: border-box;
-  box-shadow: 10px 10px var(--shadow);
-  padding:80px;
+  box-shadow:none;
+  padding:5%;
+  width:100vw;
   grid-column: 1/span 5;
   min-height:100vh;
   margin-top:-25px;
@@ -62,11 +68,21 @@ h1, h2, h3, h4{
 .col-full{
   grid-column: span 5;
 }
-.col-center,.col-1, .col-half, .col-left, .col-right{
+.col-center,.col-1, .col-half, .col-left{
   grid-column: 2/span 3;
+  margin:auto;
+}
+.col-right{
+  grid-column: 5;
+}
+.no_mobile{
+  display: none;/* do not dsplay in mobile mode */
 }
 
 @media only screen and (min-width:640px){
+  .no_mobile{
+    display: block;
+  }
   .page{
     width: 85vw;
     margin:auto;

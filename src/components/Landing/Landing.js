@@ -14,7 +14,7 @@ export default function Landing(){
           <q>The Inter-Organization Message Management System</q>
           </div>
 
-          <div className="landing_sub col-right">
+          <div className="landing_sub col-right no_mobile">
         New here? <Link to="/register">Create An Account</Link><br/>
         Come here often? <Link to="/login">Login</Link>
         </div>
@@ -34,7 +34,7 @@ export default function Landing(){
       </div>
       <footer className="small_container col-full ">
         <p className = "col-1">
-          Demo Credentials : testuser, Password1!
+          Demo Credentials: testuser, Password1!
         </p>
        <p id="copyright" className="col-right"> &copy; 2019 <a href="https://dcoollx.github.io/Portfolio">David Queen Jr</a></p>
       </footer>

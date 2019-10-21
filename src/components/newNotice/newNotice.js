@@ -35,7 +35,7 @@ export default class NewNotice extends React.Component{
   }
   render(props){
   return(
-    <div id="newNotice" className="container page col-center row-center">
+    <div id="newNotice" className="col-center row-center page container">
       <div className="col-center page_title">
         <h2 className="">New Notice</h2>
         {this.state.hasError && <p className="error">{this.state.err.message}</p>}
@@ -60,10 +60,12 @@ export default class NewNotice extends React.Component{
         <div className="container">
         <label className="col-full" htmlFor="content">Content</label>
         <textarea wrap="hard" cols="15" className="col-full" id="content" name="content" required onChange={(e)=>this.preview(e.target.value)}/>
-        <div className="col-full" id="preview" contentEditable={false}></div>
+        <div className="col-full" id="preview" contentEditable={false}>
+          <span id="preview_tip">preview</span>
+        </div>
         </div><br/>
          <div className="container">
-         <button className="col-1" type="submit">POST</button><button className="col-right" type="reset">Cancel</button>
+         <button className="col-1" type="submit">Post</button><button className="col-right" type="reset">Cancel</button>
          </div>
       </form>
      

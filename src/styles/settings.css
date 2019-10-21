@@ -11,9 +11,12 @@
   background-color: rgba(0,0,0,0.2);
   padding: 12%;
 }
+.settings input, select{
+  width:100%;
+}
 .settings > div{
   margin:auto;
-  padding: 100px;
+  padding: 10px;
 }
 #join_team{
   display:none;

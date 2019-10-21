@@ -1,15 +1,9 @@
 #newNotice{
  
-  background-color: white;
-  box-shadow: 5px 5px var(--shadow);
-  padding: 10px;
-  width:100vw;
-  overflow: scroll;
-  height:100vh;
-  grid-column-start: 1;
+
 }
 #newNotice #content, #preview{
-  max-width: 60vw;
+  max-width: 60%;
 }
 #preview{
   overflow: scroll;
@@ -17,6 +11,10 @@
   margin-bottom: 25px;
   margin-top:25px;
 
+}
+#preview_tip{
+  color:grey;
+  font-size: 75%;
 }
 .page_title{
   height:fit-content;

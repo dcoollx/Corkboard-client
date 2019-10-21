@@ -33,7 +33,7 @@ export default class Login extends React.Component{
         </div>
         <div className="login-controls container">
           <button className="col-1" type="submit">Sign In</button>
-          <Link className="col-right" to='/register'>New User?</Link>
+          <Link className="col-right" to='/register'>Register</Link>
         </div>
       </form>
       

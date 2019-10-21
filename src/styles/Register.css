@@ -5,8 +5,12 @@
   padding: 20px;
 
 }
-.seima > div{
+.siema {
   width:100%;
+}
+.siema form{
+  margin:0px;
+  padding:5px;
 }
 /* #register form{
   width:65vw;

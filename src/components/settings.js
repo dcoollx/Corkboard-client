@@ -24,7 +24,7 @@ export default class Settings extends React.Component{
         }
         else{
           input.style.display = 'none';
-        }}}> Create a Team</button></li>}
+        }}}> Create A Team</button></li>}
       <form id="create_team" onSubmit={(e)=>{
         e.preventDefault();
         let options = {
@@ -37,7 +37,7 @@ export default class Settings extends React.Component{
           localStorage.setItem('team',JSON.stringify(res));
           this.props.closeSettings();
         });
-      }}><input  name="Cteam" className="team" id="Cteam" type="text" placeholder="team name" required/><button>Create Team</button></form>
+      }}><input  name="Cteam" className="" id="Cteam" type="text" placeholder="team name" required/><button>Create Team</button></form>
       {!localStorage.getItem('team') && <li><button className="settings_button" onClick={(e)=>{
 
         let input = document.getElementById('join_team');
@@ -58,7 +58,7 @@ export default class Settings extends React.Component{
           input.style.display = 'none';
         }
       }
-        }> Join a Team</button></li>}
+        }> Join A Team</button></li>}
       <form id="join_team" onSubmit={(e)=>{
          e.preventDefault();
          let teamId = Number(e.target.Jteam.value);
@@ -73,10 +73,16 @@ export default class Settings extends React.Component{
           localStorage.setItem('team',JSON.stringify(myTeam));
           this.props.closeSettings();
         });
-      }}><select  name="Jteam" className="team" id="Jteam" type="text" placeholder="team name" required>{this.state.teamOptions}</select>
+      }}><select  name="Jteam" className="" id="Jteam" type="text" placeholder="team name" required>{this.state.teamOptions}</select>
       <button disabled = {this.state.teams.length < 1}> Join Team</button></form>
       {localStorage.getItem('team') && <li>
-        <button  onClick={(e)=>document.getElementById('manage_team').style.display='block'} className="settings_button">Manage Team</button></li>}
+        <button  onClick={(e)=>{
+          let input = document.getElementById('manage_team')
+          if(input.style.display !=='block')
+            input.style.display = "block";
+          else
+            input.style.display = 'none';
+          }} className="settings_button">Manage Team</button></li>}
       <div id="manage_team" className="container">
         <button id="leave_team" className="settings_button" onClick={(e)=>{
           let options = {
@@ -96,7 +102,7 @@ export default class Settings extends React.Component{
         tokenService.clearAuthToken();
         window.location.assign('/');
         this.props.closeSettings();
-      }}>logout</button></li>
+      }}>Log Out</button></li>
       </ul>
       </div>
   );
