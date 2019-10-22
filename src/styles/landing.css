@@ -1,12 +1,4 @@
 #landing{
-  box-sizing: border-box;
-  padding:10px;
-  background-color: white;
-  box-shadow: 10px 10px var(--shadow);
-  height:100%;
-  width:100vw;
-  margin-top:0px;
-  grid-column: 1;
 }
 .landing_div{
   display: grid,
@@ -35,14 +27,33 @@ q{
   background: radial-gradient(0deg, grey,white);
   color:white;
 }
-@media only screen  and (min-width: 760px){
-#landing{
-  margin-top:-100px;
-  padding: 100px;
+
+@media only screen  and (min-width: 720px){/* tablets */
+  /* #landing{
+    padding: 25px;
+    margin:auto;
+    margin-top:-150px;
+    width:80vw;
+    grid-column: 3;
+    font-size: 75%;
+  } */
+  #landing  img{
+    height: 150px;
+    display:inline;
+  }
+  .landing_sub{
+    font-size: 24px;
+  }
+  }
+
+@media only screen  and (min-width: 1100px){/*desktop*/
+/* #landing{
   margin:auto;
+  margin-top:-150px;
+  padding: 100px;
   width:80vw;
   grid-column: 3;
-}
+} */
 #landing  img{
   height: 300px;
   display:block;

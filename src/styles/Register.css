@@ -5,8 +5,12 @@
   padding: 20px;
 
 }
-.seima > div{
+.siema {
   width:100%;
+}
+.siema form{
+  margin:0px;
+  padding:5px;
 }
 /* #register form{
   width:65vw;
@@ -39,9 +43,6 @@ margin-top:50px;
 
 @media only screen and (min-width:640px){
   #register{
-    grid-column: 2/span 3;
-    margin:auto;
-    max-width:65vw;
     padding-top:40px;
     padding-left: 80px;
     padding-right: 80px;
@@ -55,5 +56,8 @@ margin-top:50px;
   #newOrg{
     margin:auto;
     height: 28px;
+  }
+  #register h2{
+    margin:0px;
   }
 }

@@ -14,7 +14,7 @@ import Corkboard from './components/main/announcements/corkboard';
 import Header from './components/main/header/header';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root');
+
 class App extends React.Component {
   state = {
     org:JSON.parse(localStorage.getItem('orgInfo')) || {orgId:0,orgName:'Not connected to an org'},
@@ -27,6 +27,12 @@ class App extends React.Component {
   
   componentDidMount(){
     this.init();
+    try{
+    Modal.setAppElement('#root');
+    }
+    catch(err){// catch this error so test passw
+      console.error(err);
+    }
   }
   openSettings = () =>{
     this.setState({modalIsOpen:true});

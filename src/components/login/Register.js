@@ -13,7 +13,7 @@ import seima from 'siema';
    state={
      isNewOrg:false,
      hasError:true,
-     err:'Password must match',
+     err:'',
      newUser : {},
      nameTaken : true,
      //todo make controled input
@@ -82,7 +82,7 @@ import seima from 'siema';
     }
   render(){
     return(
-      <div id="register" className=" container col-center row-full">
+      <div id="register" className=" container page row-full">
       {this.state.hasError && <p className="error col-center">{this.state.err}</p>}
        <h2 className="col-center">Sign-Up</h2> 
       <div className="siema  container col-center">{/* page one */}
@@ -106,11 +106,11 @@ import seima from 'siema';
           </div>
           
           <div className="col-full">
-          <label htmlFor="user_name">UserName</label><br/>
+          <label htmlFor="user_name">User Name</label><br/>
           <input type="text" name="user_name" id="user_name" required/>
           </div>
           <div className="col-full">
-          <label htmlFor="password">password</label>
+          <label htmlFor="password">Password</label>
           <input onChange={(e)=>{
                 if(validator(e.target.value))
                   this.setState({hasError:false,err:''});
@@ -120,7 +120,7 @@ import seima from 'siema';
           }} type="password" name="password" id="password" required/>
           </div>
           <div className="col-full">
-          <label htmlFor="re-enter_password">re-enter password</label>
+          <label htmlFor="re-enter_password">Re-Enter Password</label>
           <input id="re-enter_password" name="re-enter_password" type="password" onChange={(e)=>{
             if(e.target.value === document.getElementById('password').value){
               document.getElementById('register_submit').disabled =false;
@@ -133,7 +133,7 @@ import seima from 'siema';
           </div>
           
           <div className="small_container col-full register-controls">
-          <button className="col-1" id="reset" type="reset"onClick={(e)=>this.props.history.push('/')}>cancel</button> 
+          <button className="col-1" id="reset" type="reset"onClick={(e)=>this.props.history.push('/')}> Cancel</button> 
           <button id="register_submit" className="col-right" type="submit" disabled>Next</button>
           </div>
         </form>
@@ -153,7 +153,7 @@ import seima from 'siema';
           this.seima.prev();
         }}>
         <div className="col-full">
-            <label id="newOrgLabel" htmlFor="newOrg">New Org</label>
+            <label id="newOrgLabel" htmlFor="newOrg">New Organization?</label>
             <input id="newOrg" name="newOrg" type="checkbox" onChange={(e)=>{
               this.setState({isNewOrg : e.target.checked});
             }}/> 
@@ -166,9 +166,9 @@ import seima from 'siema';
               this.getOrg(e.target.value);
             }
           }}
-          />{this.state.newUser.org && <p>Org found: {this.state.newUser.org.org_name}</p>}</div>}
+          />{this.state.newUser.org && <p>Organization Found: {this.state.newUser.org.org_name}</p>}</div>}
           {this.state.isNewOrg && <div>
-            <label>Organization name</label>
+            <label>Organization Name</label>
             <input name="new_org_name" id="new_org_name" onChange={(e)=> this.checkIfName(e.target.value)} type='text' required placeholder="Organization name"/>          </div>}
             {this.state.isNewOrg && this.state.nameTaken && <p className="error col-full">Can't Use That Name</p>}
           <div className=" col-full small_container">
@@ -181,7 +181,7 @@ import seima from 'siema';
         <div>
           {!this.state.newUser.org && <progress/>}
           {this.state.newUser.org && <h3>Welcome to {String(this.state.newUser.org.org_name)}</h3>}
-          {this.state.newUser.org && this.state.newUser.org.code && <p> Your Organization's invite code is [{this.state.newUser.org.code}]</p>}
+          {this.state.newUser.org && this.state.newUser.org.code && <p> Your organization's invite code is [{this.state.newUser.org.code}]</p>}
           <p>Click <Link to="/login">Here</Link> to Log in</p>
         </div>
         </div>

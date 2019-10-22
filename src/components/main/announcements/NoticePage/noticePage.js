@@ -61,10 +61,10 @@ export default class NoticePage extends React.Component{
     return (<Comments key={index} content={comment.content} by={comment.created_by}/>);
   });
   return(
-  <div id="noticePage" className=" col-center row-center container ">
+  <div id="noticePage" className=" col-center row-center page container ">
    {this.state.hasError && <p className="error col-full" >{this.state.err.message}</p>}
-   <div className="notice-content col-full">
-    <h2 className="col-center">{this.state.notice.title}</h2>
+   <div className="notice-content col-full container">
+    <h2 className="col-1">{this.state.notice.title}</h2> <h2 className="col-right">{new Date(this.state.notice.created_on).toLocaleDateString()}</h2>
     <div className="content col-full" id="content"></div>
     <p className="by col-right">by: <i>{this.state.notice.created_by}</i></p>
     </div>
@@ -77,7 +77,7 @@ export default class NoticePage extends React.Component{
     }>
     <textarea id="comment" name="comment"></textarea>
     <div className="noticePage-controls container">
-    <button className="col-1" type="submit">comment</button>
+    <button className="col-1" type="submit">Comment</button>
     <button className="col-right" onClick={(e)=>this.props.history.push('/')}>Go Back</button>
     </div>
     </form>
