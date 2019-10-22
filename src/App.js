@@ -71,7 +71,12 @@ class App extends React.Component {
       token_service.setAuthToken(res.Auth);//need to decode payload
       let payload = JSON.parse(atob(res.Auth.split('.')[1]));
       this.setState({org:{orgName:payload.org_name,orgId:payload.org}})//TODO, orgid is hardcoded
-      localStorage.setItem('orgInfo',JSON.stringify({orgName:payload.org_name,orgId:payload.org}));
+      localStorage.setItem('orgInfo',JSON.stringify(
+        {
+          orgName:payload.org_name,
+          orgId:payload.org,
+          orgCode: null
+        }));
       this.init();
     });
   }

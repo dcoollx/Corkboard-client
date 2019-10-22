@@ -35,7 +35,7 @@ export default class NewNotice extends React.Component{
   }
   render(props){
   return(
-    <div id="newNotice" className="col-center row-center page container">
+    <div id="newNotice" className="col-center page ">
       <div className="col-center page_title">
         <h2 className="">New Notice</h2>
         {this.state.hasError && <p className="error">{this.state.err.message}</p>}

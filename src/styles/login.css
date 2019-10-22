@@ -23,13 +23,14 @@
 }
 #login > form > div > input, select{
   width:100%;
+  border: 2px solid grey;
 }
 @media only screen and (min-width:640px){
   #login{
-    padding:5px;
+    padding:25px;
     grid-column: 2/span 3;
     height:80%;
-    width:50%;
+    width:75%;
     margin:auto;
   }
   #login >form{

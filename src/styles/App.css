@@ -68,9 +68,10 @@ footer{
 .col-full{
   grid-column: span 5;
 }
-.col-center,.col-1, .col-half, .col-left{
+.col-stack, .col-center, .col-half, .col-left{
   grid-column: 2/span 3;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 .col-right{
   grid-column: 5;
@@ -111,14 +112,18 @@ footer{
 .col-half{
   grid-column: span 2;
 }
+button.col-right {
+  margin:20px;
+}
 .col-right{
   grid-column: 5;
 }
 .col-center{
   grid-column: 2/span 3;
 }
-.col-1{
+.col-stack, .col-1{
   grid-column: span 1;
+  margin:20px;
 }
 .row-center{
   grid-row: 4

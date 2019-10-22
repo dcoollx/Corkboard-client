@@ -2,7 +2,17 @@
  
 
 }
+#newNotice button{
+margin:20px; 
 
+}
+#title{
+  width:100%;
+  border: 2px grey solid;
+}
+#content{
+  border: 2px grey solid;
+}
 #preview{
   overflow: scroll;
   border: 1px solid black;
@@ -28,6 +38,6 @@
    padding:80px;
  }
  #newNotice #content, #preview{
-  max-width: 60%;
+ 
 }
 }
