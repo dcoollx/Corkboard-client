@@ -7,7 +7,7 @@ import seima from 'siema';
  export default class Register extends React.Component{
    componentDidMount(){
     this.seima = new seima({
-      //draggable:false,
+      draggable:false,
     });
    }
    state={
