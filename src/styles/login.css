@@ -23,6 +23,7 @@
 }
 #login > form > div > input, select{
   width:100%;
+  border: 2px solid grey;
 }
 @media only screen and (min-width:640px){
   #login{

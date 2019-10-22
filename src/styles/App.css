@@ -68,7 +68,7 @@ footer{
 .col-full{
   grid-column: span 5;
 }
-.col-center, .col-half, .col-left{
+.col-stack, .col-center, .col-half, .col-left{
   grid-column: 2/span 3;
   margin-left:auto;
   margin-right:auto;

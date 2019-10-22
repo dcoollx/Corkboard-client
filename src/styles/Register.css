@@ -37,12 +37,15 @@ button:disabled{
   color:gray;
   font-size: 75%;
 }
-
+#more_info{
+  color:white;
+}
 #org_form button{
 margin-top:50px;
 }
-#register div input, select{
+#register  input, select{
   width:100%;
+  border: 2px solid grey;
 }
 .register_controls button{
   padding:25px;

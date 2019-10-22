@@ -157,7 +157,7 @@ import seima from 'siema';
             <input id="newOrg" name="newOrg" type="checkbox" className="checkbox" onChange={(e)=>{
               this.setState({isNewOrg : e.target.checked});
             }}/> 
-            <label for="newOrg" class="switch"></label>
+            <label htmlFor="newOrg" className="switch"></label>
           </div>
           {!this.state.isNewOrg && <div className="col-full"><label htmlFor="org">Organization Code</label>
           <input id="org_code" name="org_code" type="text" required maxLength="8"
@@ -172,7 +172,7 @@ import seima from 'siema';
             <label>Organization Name</label>
             <input name="new_org_name" id="new_org_name" onChange={(e)=> this.checkIfName(e.target.value)} type='text' required placeholder="Organization name"/>          </div>}
             {this.state.isNewOrg && this.state.nameTaken && <p className="error col-full">Can't Use That Name</p>}
-            <span className="info col-full"> <span>Don't have an Organization Code?</span> <span>Contact your organization's administrator to retreive yours, or if you are an administrator try creating a new organization</span></span>
+            <span className="info col-full"> <span onMouseOver={(e)=>document.getElementById('more_info').style.color="grey"} onMouseLeave={(e)=>document.getElementById('more_info').style.color="white"}>Don't have an Organization Code?</span> <span id="more_info">Contact your organization's administrator to retreive yours, or if you are an administrator try creating a new organization</span></span>
           <div className=" col-full small_container">
           <button className="col-1" type="reset">Go Back</button>
           <button  className="col-right" type="submit" disabled = {this.state.isNewOrg ? this.state.nameTaken : !this.state.newUser.org}>Submit</button>
