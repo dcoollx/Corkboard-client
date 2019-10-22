@@ -7,7 +7,7 @@ import seima from 'siema';
  export default class Register extends React.Component{
    componentDidMount(){
     this.seima = new seima({
-      draggable:false,
+      //draggable:false,
     });
    }
    state={
@@ -82,9 +82,9 @@ import seima from 'siema';
     }
   render(){
     return(
-      <div id="register" className=" container page row-full">
-      {this.state.hasError && <p className="error col-center">{this.state.err}</p>}
-       <h2 className="col-center">Sign-Up</h2> 
+      <div id="register" className=" page row-full">
+       <h3 className="col-full">Sign-Up</h3>
+       {this.state.hasError && <p className="error">{this.state.err}</p>} 
       <div className="siema  container col-center">{/* page one */}
      
         <form className="col-center container" onSubmit = {(e)=>{
@@ -152,11 +152,12 @@ import seima from 'siema';
         onReset={(e)=>{
           this.seima.prev();
         }}>
-        <div className="col-full">
+        <div className="col-full small_container">
             <label id="newOrgLabel" htmlFor="newOrg">New Organization?</label>
-            <input id="newOrg" name="newOrg" type="checkbox" onChange={(e)=>{
+            <input id="newOrg" name="newOrg" type="checkbox" className="checkbox" onChange={(e)=>{
               this.setState({isNewOrg : e.target.checked});
             }}/> 
+            <label for="newOrg" class="switch"></label>
           </div>
           {!this.state.isNewOrg && <div className="col-full"><label htmlFor="org">Organization Code</label>
           <input id="org_code" name="org_code" type="text" required maxLength="8"
@@ -171,10 +172,11 @@ import seima from 'siema';
             <label>Organization Name</label>
             <input name="new_org_name" id="new_org_name" onChange={(e)=> this.checkIfName(e.target.value)} type='text' required placeholder="Organization name"/>          </div>}
             {this.state.isNewOrg && this.state.nameTaken && <p className="error col-full">Can't Use That Name</p>}
+            <span className="info col-full"> <span>Don't have an Organization Code?</span> <span>Contact your organization's administrator to retreive yours, or if you are an administrator try creating a new organization</span></span>
           <div className=" col-full small_container">
           <button className="col-1" type="reset">Go Back</button>
           <button  className="col-right" type="submit" disabled = {this.state.isNewOrg ? this.state.nameTaken : !this.state.newUser.org}>Submit</button>
-          
+          {/* page 3 start */}
           
           </div>
         </form>

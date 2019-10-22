@@ -68,9 +68,10 @@ footer{
 .col-full{
   grid-column: span 5;
 }
-.col-center,.col-1, .col-half, .col-left{
+.col-center, .col-half, .col-left{
   grid-column: 2/span 3;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 .col-right{
   grid-column: 5;

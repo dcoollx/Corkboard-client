@@ -5,7 +5,10 @@
   padding: 20px;
 
 }
-.siema {
+.register-controls{
+margin-top:25px;
+}
+#register .siema {
   width:100%;
 }
 .siema form{
@@ -27,6 +30,14 @@ button:disabled{
   box-sizing: border-box;
   margin-bottom: 50px;
 }
+#org_form{
+  row-gap: 5%;
+}
+.info{
+  color:gray;
+  font-size: 75%;
+}
+
 #org_form button{
 margin-top:50px;
 }
@@ -39,6 +50,9 @@ margin-top:50px;
 #newOrg{
   margin:auto;
   height: 28px;
+  }
+  #register h3{
+
   }
 
 @media only screen and (min-width:640px){
@@ -57,7 +71,7 @@ margin-top:50px;
     margin:auto;
     height: 28px;
   }
-  #register h2{
+  #register h3{
     margin:0px;
   }
 }
