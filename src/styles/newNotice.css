@@ -2,9 +2,7 @@
  
 
 }
-#newNotice #content, #preview{
-  max-width: 60%;
-}
+
 #preview{
   overflow: scroll;
   border: 1px solid black;
@@ -29,4 +27,7 @@
    grid-column-start: 2;
    padding:80px;
  }
+ #newNotice #content, #preview{
+  max-width: 60%;
+}
 }

@@ -77,7 +77,7 @@ export default class NoticePage extends React.Component{
     }>
     <textarea id="comment" name="comment"></textarea>
     <div className="noticePage-controls container">
-    <button className="col-1" type="submit">comment</button>
+    <button className="col-1" type="submit">Comment</button>
     <button className="col-right" onClick={(e)=>this.props.history.push('/')}>Go Back</button>
     </div>
     </form>

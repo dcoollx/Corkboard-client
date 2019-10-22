@@ -17,6 +17,8 @@
   
   height: 50%;
   margin:-10px;
+  color:white;
+  padding-left:10px;
 }
 .level-1{
 background-color:red;
