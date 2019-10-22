@@ -6,7 +6,7 @@ export default function(props){
     return <Comment {...props} key={index} data={notice}/>
    });
   return(
-  <div id="corkboard" className="corkboard col-center row-center container">
+  <div id="corkboard" className="corkboard col-center container">
    {notices}
   </div>);
 }
