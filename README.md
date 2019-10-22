@@ -52,6 +52,4 @@ While there are plenty of social media platforms today, none of them fulfill the
 
 
 ## License
-A short snippet describing the license (MIT, Apache etc)
-
 MIT © [David Queen Jr](https://github.com/dcoollx)
