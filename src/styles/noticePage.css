@@ -7,6 +7,9 @@
 #noticePage-controls{
   width:100%;
 }
+#noticePage h2{
+  font-size: 100%;
+}
 
 .content{
   border: 1px solid black;
@@ -21,6 +24,7 @@
   font-size: 75%;
   color:white;
   text-align:right;
+  padding-right:10px;
   
 }
 .comment-content:before,.comment-content:after{
