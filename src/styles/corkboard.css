@@ -4,10 +4,10 @@
 
 @media only screen and (min-width:640px){
   #corkboard{
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
    }
 }
-@media only screen and (min-width:1100px){
+@media only screen and (min-width:700px){
   #corkboard{
     grid-template-columns: auto auto auto;
    }
