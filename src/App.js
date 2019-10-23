@@ -24,6 +24,9 @@ class App extends React.Component {
     hasError:false,
     err:null
   };
+  static getDerivedStateFromError(){
+    return {hasError :true}
+  }
   
   componentDidMount(){
     this.init();
@@ -31,7 +34,7 @@ class App extends React.Component {
     Modal.setAppElement('#root');
     }
     catch(err){// catch this error so test passw
-      console.error(err);
+      //console.error(err);
     }
   }
   openSettings = () =>{
