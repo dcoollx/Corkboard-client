@@ -10,8 +10,8 @@ export default class Login extends React.Component{
     return(
     <div id="login" className=" col-center ">
       <div className="col-center">
-        {this.state.hasError && <p className="error">{this.state.err}</p>}
         <h2>Log In</h2>
+    <p className={`error error-${this.state.hasError}`}>{this.state.err || "No Error"}</p>
       </div>
       <form className="col-center" onSubmit={(e)=>{
         e.preventDefault();
