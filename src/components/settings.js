@@ -101,6 +101,7 @@ export default class Settings extends React.Component{
       <li><button className="settings_button" onClick ={(e)=>{
         tokenService.clearAuthToken();
         window.location.assign('/');
+        localStorage.removeItem('orgInfo');
         this.props.closeSettings();
       }}>Log Out</button></li>
       </ul>

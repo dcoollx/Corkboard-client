@@ -9,7 +9,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-test-renderer": "^16.10.2",
+    "react-test-renderer": "^16.8.6",
     "showdown": "^1.9.0",
     "siema": "^1.5.1"
   },

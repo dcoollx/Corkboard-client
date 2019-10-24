@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<main
+  className="App main-container "
+>
+  <nav
+    className=" container col-full"
+    id="header"
+  >
+    <div>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          alt="logo"
+          id="logo"
+          src="logo.png"
+        />
+      </a>
+      <h1
+        className="home"
+      >
+        Not connected to an org
+      </h1>
+      <p
+        style={
+          Object {
+            "fontSize": "40%",
+            "margin": "0px",
+          }
+        }
+      >
+        Not connected to a team
+      </p>
+    </div>
+    <div
+      className="col-right"
+    >
+      <a
+        href="/login"
+        onClick={[Function]}
+      >
+        log in
+      </a>
+       | 
+      <a
+        href="/register"
+        onClick={[Function]}
+      >
+        register
+      </a>
+    </div>
+  </nav>
+  <div
+    className="container page"
+    id="landing"
+  >
+    <div
+      className="col-full small_container"
+      id="landing_header"
+    >
+      <div
+        className="col-full small_container"
+      >
+        <div
+          className="col-1"
+        >
+          <h1>
+            Corkboard
+          </h1>
+          <q>
+            The Inter-Organization Message Management System
+          </q>
+        </div>
+        <div
+          className="landing_sub col-right no_mobile"
+        >
+          New here? 
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            Create An Account
+          </a>
+          <br />
+          Come here often? 
+          <a
+            href="/login"
+            onClick={[Function]}
+          >
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="small_container col-full  "
+    >
+      <h3
+        className="col-left"
+      >
+        Share messsages with your whole Organization or just a single team
+      </h3>
+      <img
+        alt="connections"
+        className="col-right"
+        src="connections.png"
+      />
+    </div>
+    <div
+      className="small_container col-full  "
+    >
+      <img
+        alt="pictures"
+        className="col-left"
+        src="picture.png"
+      />
+      <h3
+        className="col-right"
+      >
+        Share photos and links
+      </h3>
+    </div>
+    <div
+      className="small_container col-full  "
+    >
+      <h3
+        className="col-left"
+      >
+        Craft exciting notifications using HTML5 or markdown
+      </h3>
+      <img
+        alt="web browser"
+        className="col-right"
+        src="browser.png"
+      />
+    </div>
+    <footer
+      className="small_container col-full "
+    >
+      <p
+        className="col-1"
+      >
+        Demo Credentials: testuser, Password1!
+      </p>
+      <p
+        className="col-right"
+        id="copyright"
+      >
+         © 2019 
+        <a
+          href="https://dcoollx.github.io/Portfolio"
+        >
+          David Queen Jr
+        </a>
+      </p>
+    </footer>
+  </div>
+</main>
+`;
