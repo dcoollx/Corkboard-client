@@ -17,7 +17,7 @@ import seima from 'siema';
    }
    state={
      isNewOrg:false,
-     hasError:true,
+     hasError:false,
      err:'',
      newUser : {},
      nameTaken : true,
@@ -70,6 +70,7 @@ import seima from 'siema';
       let res = await fetch(`${Api.url}orgs?name=${name}`,{method:'head'})
        if(res.status === 404){
             nameTaken = false;
+            console.clear();//this is so it doesnt spam console, it will also erase ginuene errors
        }
        else if(res.ok){
         nameTaken = true;
@@ -89,7 +90,7 @@ import seima from 'siema';
     return(
       <div id="register" className=" page row-full">
        <h3 className="col-full">Sign-Up</h3>
-       {this.state.hasError && <p className="error">{this.state.err}</p>} 
+       <p className={`error error-${this.state.hasError}` }>{this.state.err || "No Error"} </p> 
       <div className="siema  container col-center">{/* page one */}
      
         <form className="col-center container" onSubmit = {(e)=>{
@@ -176,7 +177,7 @@ import seima from 'siema';
           {this.state.isNewOrg && <div>
             <label>Organization Name</label>
             <input name="new_org_name" id="new_org_name" onChange={(e)=> this.checkIfName(e.target.value)} type='text' required placeholder="Organization name"/>          </div>}
-            {this.state.isNewOrg && this.state.nameTaken && <p className="error col-full">Can't Use That Name</p>}
+            {this.state.isNewOrg && this.state.nameTaken && <p className={`error error-${this.state.nameTaken} col-full`}>Can't Use That Name</p>}
             <span className="info col-full"> <span onMouseOver={(e)=>document.getElementById('more_info').style.color="grey"} onMouseLeave={(e)=>document.getElementById('more_info').style.color="white"}>Don't have an Organization Code?</span> <span id="more_info">Contact your organization's administrator to retreive yours, or if you are an administrator try creating a new organization</span></span>
           <div className=" col-full small_container">
           <button className="col-1" type="reset">Go Back</button>
