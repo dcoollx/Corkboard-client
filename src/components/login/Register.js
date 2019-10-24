@@ -6,9 +6,14 @@ import seima from 'siema';
 
  export default class Register extends React.Component{
    componentDidMount(){
+     try{
     this.seima = new seima({
       draggable:false,
     });
+  }
+  catch(err){
+    this.setState({hasError:true,err:"Seima Failure"});
+  }
    }
    state={
      isNewOrg:false,
